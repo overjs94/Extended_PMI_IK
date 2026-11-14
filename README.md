@@ -6,7 +6,11 @@ URDF → symbolic FK/Jacobian → constrained midpoint IK → measured benchmark
 
 ## 홈페이지와 성능
 
-공개 홈페이지는 아직 배포되지 않았습니다. [배포 설정](docs/deployment.md)과 [실측 성능 비교](docs/performance-evidence.md)를 확인하세요. 현재 CPU ADMM/DRS가 baseline보다 빠르다는 결과는 없으며, 장애물 preview의 개선은 한 시나리오에서만 확인했습니다.
+GitHub Pages 기록 뷰어의 배포 주소: **https://overjs94.github.io/Extended_PMI_IK/**
+
+이전 Contact_contraction과 같은 정적 게시 방식입니다. 21개 embodiment/scenario와 63개 실제 계산 기록, collision/visual mesh, benchmark를 재생합니다. 공개 페이지는 Python IK를 새로 계산하지 않으며, 변경된 URDF/파라미터의 실시간 계산에는 아래 로컬 API 또는 별도 서버가 필요합니다. `.github/workflows/pages.yml`은 게시 후 실제 URL과 데이터·메시 접근을 검증합니다.
+
+[문헌·동일 조건 비교](benchmarks/README.md), [실측 CPU 병렬 결과](benchmarks/reports/cpu-parallel.md), [배포 설명](docs/deployment.md)을 확인하세요. 현재 24개 독립 IK query의 4-process 처리량은 약 3.93배 개선됐지만, 한 문제 내부의 4-thread 분할법이 1-thread보다 빠르지는 않았습니다. 이것을 GPU speedup이나 SOTA 우월성으로 표현하지 않습니다.
 
 ## 실행
 
@@ -63,12 +67,12 @@ OPENBLAS_NUM_THREADS=1 .venv/bin/extended-pmi benchmark \
 | Maximal QP-PMI (`C=0`) | OSQP, qpOASES | 지원 | 지원 | 지원 |
 | Maximal Skew-PMI (`Cᵀ=-C`) | VI active set | 지원 | 일반 QP ADMM 적용 불가 | 지원 |
 
-qpOASES는 CasADi의 **실제 qpOASES plugin**, OSQP는 공식 Python binding을 사용합니다. Skew-PMI를 `DᵀD`로 바꾸거나 skew 부분을 버려 QP로 위장하지 않습니다. 분할법의 body resolvent와 factor projection은 병렬화 가능한 독립 batch로 구현했으나, 현재 실행·검증은 NumPy CPU입니다. GPU/분산 worker 실행 또는 speedup은 검증하지 않았습니다.
+qpOASES는 CasADi의 **실제 qpOASES plugin**, OSQP는 공식 Python binding을 사용합니다. Skew-PMI를 `DᵀD`로 바꾸거나 skew 부분을 버려 QP로 위장하지 않습니다. NumPy 참조 외에 실제 Numba CPU thread로 body/factor/consensus를 계산하는 구현이 있습니다. ADMM/DRS에서 `Settings(splitting_backend="numba", cpu_workers=1/2/4)`를 선택합니다. 독립 IK query의 process 병렬 처리도 별도 측정했습니다. GPU 및 분산 머신 실행은 검증하지 않았습니다.
 
 측정은 동일 seed/초기 상태/목표를 사용합니다. 모델·constraint 함수 생성 시간은 setup 시간으로, IK 반복·FK·제약 평가·frame 기록은 solve wall time으로 구분합니다. UI는 한 seed의 탐색 결과이며 통계적 논문 비교에는 CLI 다중 seed와 동일 장비·thread 설정이 필요합니다. `converged`는 pose/constraint tolerance 충족이며 KKT 또는 정지 속도의 인증은 아닙니다.
 
 ## 연구 방향과 남은 통합
 
-[설계 및 receding-horizon 논의](docs/research-design.md), [원본 코드 대응](docs/source-provenance.md)을 참고하세요. 다른 ChatGPT 프로젝트의 `extended_pmi_ik_draft` 대화와 contact-contraction 저장소에는 이 세션에서 접근할 수 없으므로, 그 내용까지 반영했다고 주장하지 않습니다.
+[설계 및 receding-horizon 논의](docs/research-design.md), [원본 코드 대응](docs/source-provenance.md)을 참고하세요. 다른 ChatGPT 프로젝트의 `extended_pmi_ik_draft` 대화는 직접 열람할 수 없습니다. 공개 `Contact_contraction`의 Pages 배포와 `scale-aware-contact-transfer`의 URDF 함수 API는 확인했으며, 정적 기록 뷰어 방식을 동일하게 적용했습니다.
 
 원본 ROS 빌드는 `ik_msgs`, ROS 1, NLopt, FCL, 외부 qpOASES/qpSWIFT tree에 의존합니다. 제공된 ZIP에는 해당 third-party 전체가 없었습니다. 새 코어는 이를 요구하지 않습니다. ROS bridge를 사용하려면 rospy와 코어를 같은 Python 환경에 설치하고 `/robot_description`, `/joint_states`, `~target_link`, `~world_frame`을 설정하세요. `~target` (`PoseStamped`)을 받아 `~solution` (`JointState`)만 발행하며 하드웨어 명령은 발행하지 않습니다.

@@ -27,7 +27,7 @@ QP ADMM minimizes the symmetric quadratic body costs with local factor copies. A
 
 DRS operates on the product space of body variables and local factor copies. One resolvent applies `(I+gamma D_i)^-1` to bodies and projects each factor; the other projects all incident copies onto consensus by averaging. The same implementation applies to `C=0` and retained-skew operators. Ordinary scalar-QP ADMM is intentionally unavailable for nonsymmetric `D`.
 
-Warm-started splitting states are reused across midpoint steps. Inner tolerance, feasibility residual and iteration limits are checked. Nonconvergence is recorded as `solver_failed`, not silently accepted. These are vectorized CPU reference kernels; no GPU, distributed scheduler or measured parallel speedup is supplied.
+Warm-started splitting states are reused across midpoint steps. Inner tolerance, feasibility residual and iteration limits are checked. Nonconvergence is recorded as `solver_failed`, not silently accepted. The NumPy path is a serial vectorized reference. A separate Numba backend now runs actual CPU-threaded body/factor/CSR-consensus phases. Threaded subproblem speed and independent-query process throughput are measured separately in `benchmarks/reports/cpu-parallel.md`. There is no GPU/distributed-machine implementation or universal parallel speedup claim.
 
 ## Restore true obstacle inequalities
 

@@ -1,8 +1,20 @@
 # Public website deployment
 
-**There is no verified public homepage URL yet.** The GitHub repository link is source code. The cloud workbench has been tested internally, which does not make it publicly hosted.
+The public recorded-viewer deployment target is **https://overjs94.github.io/Extended_PMI_IK/**. The Pages workflow verifies the actual public response after publishing; source pushes alone are not evidence of a successful deployment.
 
-The application needs both the Vite/Three.js frontend and the Python/CasADi solver API. A static GitHub Pages upload alone cannot run the current solvers.
+## Recorded viewer: GitHub Pages
+
+This follows the already published `overjs94/Contact_contraction` workflow: recorded solver data and URDF visuals are static files, not a Python service. The public page labels recorded execution, fixes parameters to their measured values, and never pretends a saved response is a new solve. Realistic meshes and collision geometry use separate URDF origins. Native baseline energy is shown as unreported rather than invented.
+
+`web/recordings` contains 21 scenario descriptions and 63 measured runs. Some have timeouts/failures, which remain visible. Up to 72 actual solver states are retained per run with their original iteration indices; there is no pose interpolation or physical-dynamics claim. The five-second recording budget is separate from the frame-disabled one-second research pilot.
+
+To regenerate records, use the optional benchmark environment and `OPENBLAS_NUM_THREADS=1 .benchmark-venv/bin/python scripts/record_viewer.py --overwrite`. Publication does **not** rerun solvers or change measured values. It fetches pinned model assets, builds `VITE_STATIC_REPLAY=1 PUBLIC_BASE_PATH=/Extended_PMI_IK/`, copies measured records, validates all files, and deploys through GitHub Pages. Both encoded and already HTTP-decoded gzip datasets are supported.
+
+Internal static browser checks passed with the exact subpath and zero `/api/` requests. A failed Pages setup/deployment must be reported as failed; do not assert the target URL is live before the post-deployment check succeeds.
+
+## Optional live optimization service
+
+Live optimization requires both the frontend and Python/CasADi API. Static Pages can replay all saved results and models, but cannot execute the current Python solver. The earlier assumption that all public visualization requires a separate live server was incorrect.
 
 ## Prepared deployment
 

@@ -1,0 +1,50 @@
+name: Publish recorded research viewer
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - name: Fetch pinned robot assets
+        run: python3 scripts/fetch_models.py
+      - name: Build recorded viewer
+        run: |
+          npm --prefix web ci --no-audit --no-fund
+          VITE_STATIC_REPLAY=1 PUBLIC_BASE_PATH=/Extended_PMI_IK/ npm --prefix web run build
+          python3 scripts/build_pages.py
+          python3 scripts/verify_pages.py
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/dist
+      - name: Publish
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Check public homepage and meshes
+        run: python3 scripts/check_published.py
+        env:
+          SITE_URL: ${{ steps.deployment.outputs.page_url }}

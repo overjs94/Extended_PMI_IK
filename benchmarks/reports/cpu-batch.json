@@ -1,0 +1,1358 @@
+{
+  "scope": "Independent IK-query process parallelism; throughput, not single-query latency or body-level parallel speedup.",
+  "method": "maximal-schur",
+  "settings": {
+    "dt": 0.04,
+    "iterations": 600,
+    "position_tolerance": 0.0001,
+    "rotation_tolerance": 0.001,
+    "constraint_tolerance": 1e-05,
+    "contraction": 0.25,
+    "alpha": 1.0,
+    "stiffness": 120.0,
+    "damping": 4.0,
+    "mass": 0.1,
+    "preview": false,
+    "wall_time_limit_s": 5.0,
+    "record_frames": false,
+    "strict_closure_check": true,
+    "splitting_backend": "numpy",
+    "cpu_workers": 1
+  },
+  "input_sha256": [
+    "54ccc9c517e163ed7c91fb97a36382ddec6a8afbf6131332f7d9a94b43ca8126",
+    "b66d13d58efc2d7f4afac13604de2cbdb2d6b00e4dd07c95dc98e7866241622c",
+    "0649315f1e7f58f5c98034eb89d398b2f6c41aeed7869cec5f9eed16a16b0c59",
+    "d17ba28698449f4640b8a03e6c61115dbacacd564feac09c35c23b7a6fb5e050",
+    "56598541a81919aae73d99f09be3e641fe1bcb5a648016e420a8d8b3e79d7adc",
+    "54abf7a970e9aa6ac340aa1f084997563846f37394154013325245502253c09c",
+    "f10db9d98abaa08273d6a774e42f85df14d6116000561a78eac01888e004dc57",
+    "f1acda30decad3d26144e0b30ba78815e76a7453d08b816e43be3eccbba7a656",
+    "8ca4222968984f5d22b9008d336746c43b8c75de630173c1c4e6b3df7380c1f2",
+    "426732a9e1ef36fd5a0cbf0abfc15f5db359a5f179a97a548fadbbd7df52ea8f",
+    "997c231f0132e41e379273dd55bd39fc22aa7a8d1e9e17b522ccae9c04989027",
+    "81bc99a0df92b8660da7d6e1231fcf47bc4e05d68c48781d0a5a3b1c6d85e03b",
+    "b2897311efaf1541a625ed9f4841211fe66df1bf7cadcd4df1f70fc26c1552fb",
+    "eba0de33670c9364f052c2eb1e77930ec309bb3f477c370fe248d58a34d7dcb8",
+    "1bdc2b8b5dde97976a6cffda4c8d1fe9f3712d41f160231358de42ae156728c2",
+    "ef0c5315469b650bec72a8c3403b5e0b8b6779958ea2389b00176235ab987a31",
+    "25e4978e7ca4282b33215b3065d3cee59f9d7f68ed7534498191041ed2285757",
+    "bcb23a80efe514f7dc196af64ffa5e0c6b812fed416cc549f17bf3cdf6691a81",
+    "c64d60ed4577ecaf26ae937a3e0f296a4ebe79c10efdbcaeb2a560975d20f571",
+    "bc5e48c36c8e61884899f275b44fc74bb83227aa289ca1d37d4437eb01c9db96",
+    "f9728b0868b10c63925bf587b072eb2fe5104d12dd14a0c8bed35a8187ddd5c0",
+    "644315303269a79dd800adf0e8bf4d5cfed8270cde895730e4f8feede2f1723e",
+    "8ff4506045d78e2766ef6d48f898681b33a232a066019ef310a09c0f10b64cc9",
+    "d121fdeeac7ad974d6a0f0382679395e891e28ab48c921985fef155a98730f6c"
+  ],
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "packages": {
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "osqp": "1.1.1",
+      "casadi": "3.7.2",
+      "pin-pink": "4.4.0",
+      "pin": "4.1.0",
+      "mink": "1.4.0",
+      "mujoco": "4.0.1",
+      "qpsolvers": "4.13.0"
+    },
+    "cpu_quota_cores": 4.0,
+    "affinity_cpus": 5,
+    "blas_threads": "1",
+    "cuda_devices": [],
+    "git_commit": "4bcbdc9dddd22cd78e429d6649eb363c0d40123a",
+    "source_sha256": "08040a3073f686c156d8742b2f066249d840fb5c286d65136d1460ef00a63f70"
+  },
+  "runs": [
+    {
+      "workers": 1,
+      "pool_initialization_ms": 543.4354010003517,
+      "batch_wall_time_ms": 4473.742146999939,
+      "queries": 24,
+      "successes": 24,
+      "successful_queries_per_second": 5.364636407597661,
+      "all_queries_per_second": 5.364636407597661,
+      "worker_pids": [
+        13863
+      ],
+      "observed_job_pids": [
+        13863
+      ],
+      "rows": [
+        {
+          "case_id": "panda/nearby/0/54ccc9c517",
+          "case_sha256": "54ccc9c517e163ed7c91fb97a36382ddec6a8afbf6131332f7d9a94b43ca8126",
+          "pid": 13863,
+          "status": "success",
+          "solve_wall_time_ms": 149.1443459999573,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.876361639330631e-05,
+            "rotation_error_rad": 1.3819748271956123e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/1/b66d13d58e",
+          "case_sha256": "b66d13d58efc2d7f4afac13604de2cbdb2d6b00e4dd07c95dc98e7866241622c",
+          "pid": 13863,
+          "status": "success",
+          "solve_wall_time_ms": 192.61632100005954,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.961741146981008e-05,
+            "rotation_error_rad": 1.4564135880680188e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/2/0649315f1e",
+          "case_sha256": "0649315f1e7f58f5c98034eb89d398b2f6c41aeed7869cec5f9eed16a16b0c59",
+          "pid": 13863,
+          "status": "success",
+          "solve_wall_time_ms": 204.02728200042475,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.6935017355035e-05,
+            "rotation_error_rad": 1.388682659178313e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/3/d17ba28698",
+          "case_sha256": "d17ba28698449f4640b8a03e6c61115dbacacd564feac09c35c23b7a6fb5e050",
+          "pid": 13863,
+          "status": "success",
+          "solve_wall_time_ms": 156.80962100032048,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.958800853122558e-05,
+            "rotation_error_rad": 1.4299471730636585e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/4/56598541a8",
+          "case_sha256": "56598541a81919aae73d99f09be3e641fe1bcb5a648016e420a8d8b3e79d7adc",
+          "pid": 13863,
+          "status": "success",
+          "solve_wall_time_ms": 155.54615000019112,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.629912695758936e-05,
+            "rotation_error_rad": 1.2546254357547802e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/5/54abf7a970",
+          "case_sha256": "54abf7a970e9aa6ac340aa1f084997563846f37394154013325245502253c09c",
+          "pid": 13863,
+          "status": "success",
+          "solve_wall_time_ms": 174.98313499982032,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.940266355712646e-05,
+            "rotation_error_rad": 1.4100733202467924e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/6/f10db9d98a",
+          "case_sha256": "f10db9d98abaa08273d6a774e42f85df14d6116000561a78eac01888e004dc57",
+          "pid": 13863,
+          "status": "success",
+          "solve_wall_time_ms": 149.65079399917158,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.799664429442108e-05,
+            "rotation_error_rad": 1.4098192801418353e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/7/f1acda30de",
+          "case_sha256": "f1acda30decad3d26144e0b30ba78815e76a7453d08b816e43be3eccbba7a656",
+          "pid": 13863,
+          "status": "success",
+          "solve_wall_time_ms": 180.66626299969357,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.707131739494575e-05,
+            "rotation_error_rad": 1.3057616758952277e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/8/8ca4222968",
+          "case_sha256": "8ca4222968984f5d22b9008d336746c43b8c75de630173c1c4e6b3df7380c1f2",
+          "pid": 13863,
+          "status": "success",
+          "solve_wall_time_ms": 193.23762000021816,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.851643355477329e-05,
+            "rotation_error_rad": 1.4486740136173058e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/9/426732a9e1",
+          "case_sha256": "426732a9e1ef36fd5a0cbf0abfc15f5db359a5f179a97a548fadbbd7df52ea8f",
+          "pid": 13863,
+          "status": "success",
+          "solve_wall_time_ms": 133.24809099958657,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.637102331806859e-05,
+            "rotation_error_rad": 6.230189072091456e-06,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/10/997c231f01",
+          "case_sha256": "997c231f0132e41e379273dd55bd39fc22aa7a8d1e9e17b522ccae9c04989027",
+          "pid": 13863,
+          "status": "success",
+          "solve_wall_time_ms": 165.5098450000878,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.774995159342987e-05,
+            "rotation_error_rad": 1.425424119116428e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/11/81bc99a0df",
+          "case_sha256": "81bc99a0df92b8660da7d6e1231fcf47bc4e05d68c48781d0a5a3b1c6d85e03b",
+          "pid": 13863,
+          "status": "success",
+          "solve_wall_time_ms": 124.01810499977728,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.776449036919506e-05,
+            "rotation_error_rad": 8.281339562279034e-06,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/12/b2897311ef",
+          "case_sha256": "b2897311efaf1541a625ed9f4841211fe66df1bf7cadcd4df1f70fc26c1552fb",
+          "pid": 13863,
+          "status": "success",
+          "solve_wall_time_ms": 191.29841700032557,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.548855108181036e-05,
+            "rotation_error_rad": 1.3586317630896338e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/13/eba0de3367",
+          "case_sha256": "eba0de33670c9364f052c2eb1e77930ec309bb3f477c370fe248d58a34d7dcb8",
+          "pid": 13863,
+          "status": "success",
+          "solve_wall_time_ms": 174.1961679999804,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.769669729956659e-05,
+            "rotation_error_rad": 1.3153826205755366e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/14/1bdc2b8b5d",
+          "case_sha256": "1bdc2b8b5dde97976a6cffda4c8d1fe9f3712d41f160231358de42ae156728c2",
+          "pid": 13863,
+          "status": "success",
+          "solve_wall_time_ms": 133.0187580006168,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.624330760523869e-05,
+            "rotation_error_rad": 1.365469036715889e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/15/ef0c531546",
+          "case_sha256": "ef0c5315469b650bec72a8c3403b5e0b8b6779958ea2389b00176235ab987a31",
+          "pid": 13863,
+          "status": "success",
+          "solve_wall_time_ms": 161.53480400043918,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.610675141086051e-05,
+            "rotation_error_rad": 1.3458066048254948e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/16/25e4978e7c",
+          "case_sha256": "25e4978e7ca4282b33215b3065d3cee59f9d7f68ed7534498191041ed2285757",
+          "pid": 13863,
+          "status": "success",
+          "solve_wall_time_ms": 102.43475600054808,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.324609596014008e-05,
+            "rotation_error_rad": 1.0696309545239019e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/17/bcb23a80ef",
+          "case_sha256": "bcb23a80efe514f7dc196af64ffa5e0c6b812fed416cc549f17bf3cdf6691a81",
+          "pid": 13863,
+          "status": "success",
+          "solve_wall_time_ms": 157.09626999978354,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.588178837053461e-05,
+            "rotation_error_rad": 1.3936175226555061e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/18/c64d60ed45",
+          "case_sha256": "c64d60ed4577ecaf26ae937a3e0f296a4ebe79c10efdbcaeb2a560975d20f571",
+          "pid": 13863,
+          "status": "success",
+          "solve_wall_time_ms": 148.90943400041579,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.734172247031026e-05,
+            "rotation_error_rad": 1.2731121459480708e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/19/bc5e48c36c",
+          "case_sha256": "bc5e48c36c8e61884899f275b44fc74bb83227aa289ca1d37d4437eb01c9db96",
+          "pid": 13863,
+          "status": "success",
+          "solve_wall_time_ms": 169.79737200017553,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.82455984517987e-05,
+            "rotation_error_rad": 1.2994523058866342e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/20/f9728b0868",
+          "case_sha256": "f9728b0868b10c63925bf587b072eb2fe5104d12dd14a0c8bed35a8187ddd5c0",
+          "pid": 13863,
+          "status": "success",
+          "solve_wall_time_ms": 120.46065999948041,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.702156853825744e-05,
+            "rotation_error_rad": 1.3310126220207686e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/21/6443153032",
+          "case_sha256": "644315303269a79dd800adf0e8bf4d5cfed8270cde895730e4f8feede2f1723e",
+          "pid": 13863,
+          "status": "success",
+          "solve_wall_time_ms": 136.2402300001122,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.574206473129219e-05,
+            "rotation_error_rad": 9.803851323960546e-06,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/22/8ff4506045",
+          "case_sha256": "8ff4506045d78e2766ef6d48f898681b33a232a066019ef310a09c0f10b64cc9",
+          "pid": 13863,
+          "status": "success",
+          "solve_wall_time_ms": 145.23219100010465,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.858627019214434e-05,
+            "rotation_error_rad": 1.2810913874783756e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/23/d121fdeeac",
+          "case_sha256": "d121fdeeac7ad974d6a0f0382679395e891e28ab48c921985fef155a98730f6c",
+          "pid": 13863,
+          "status": "success",
+          "solve_wall_time_ms": 135.3841680002006,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.550371831072311e-05,
+            "rotation_error_rad": 1.0795068051764098e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        }
+      ],
+      "batch_wall_speedup_vs_one_process": 1.0
+    },
+    {
+      "workers": 2,
+      "pool_initialization_ms": 609.4712619997154,
+      "batch_wall_time_ms": 2199.390857000253,
+      "queries": 24,
+      "successes": 24,
+      "successful_queries_per_second": 10.912112289460717,
+      "all_queries_per_second": 10.912112289460717,
+      "worker_pids": [
+        13871,
+        13868
+      ],
+      "observed_job_pids": [
+        13868,
+        13871
+      ],
+      "rows": [
+        {
+          "case_id": "panda/nearby/0/54ccc9c517",
+          "case_sha256": "54ccc9c517e163ed7c91fb97a36382ddec6a8afbf6131332f7d9a94b43ca8126",
+          "pid": 13871,
+          "status": "success",
+          "solve_wall_time_ms": 141.8097369996758,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.876361639330631e-05,
+            "rotation_error_rad": 1.3819748271956123e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/1/b66d13d58e",
+          "case_sha256": "b66d13d58efc2d7f4afac13604de2cbdb2d6b00e4dd07c95dc98e7866241622c",
+          "pid": 13868,
+          "status": "success",
+          "solve_wall_time_ms": 204.18896299997868,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.961741146981008e-05,
+            "rotation_error_rad": 1.4564135880680188e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/2/0649315f1e",
+          "case_sha256": "0649315f1e7f58f5c98034eb89d398b2f6c41aeed7869cec5f9eed16a16b0c59",
+          "pid": 13871,
+          "status": "success",
+          "solve_wall_time_ms": 141.69514600052935,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.6935017355035e-05,
+            "rotation_error_rad": 1.388682659178313e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/3/d17ba28698",
+          "case_sha256": "d17ba28698449f4640b8a03e6c61115dbacacd564feac09c35c23b7a6fb5e050",
+          "pid": 13868,
+          "status": "success",
+          "solve_wall_time_ms": 151.62028299982921,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.958800853122558e-05,
+            "rotation_error_rad": 1.4299471730636585e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/4/56598541a8",
+          "case_sha256": "56598541a81919aae73d99f09be3e641fe1bcb5a648016e420a8d8b3e79d7adc",
+          "pid": 13871,
+          "status": "success",
+          "solve_wall_time_ms": 141.2356480004746,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.629912695758936e-05,
+            "rotation_error_rad": 1.2546254357547802e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/5/54abf7a970",
+          "case_sha256": "54abf7a970e9aa6ac340aa1f084997563846f37394154013325245502253c09c",
+          "pid": 13868,
+          "status": "success",
+          "solve_wall_time_ms": 164.72206500020548,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.940266355712646e-05,
+            "rotation_error_rad": 1.4100733202467924e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/6/f10db9d98a",
+          "case_sha256": "f10db9d98abaa08273d6a774e42f85df14d6116000561a78eac01888e004dc57",
+          "pid": 13871,
+          "status": "success",
+          "solve_wall_time_ms": 135.64693199987232,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.799664429442108e-05,
+            "rotation_error_rad": 1.4098192801418353e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/7/f1acda30de",
+          "case_sha256": "f1acda30decad3d26144e0b30ba78815e76a7453d08b816e43be3eccbba7a656",
+          "pid": 13868,
+          "status": "success",
+          "solve_wall_time_ms": 176.81817100037733,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.707131739494575e-05,
+            "rotation_error_rad": 1.3057616758952277e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/8/8ca4222968",
+          "case_sha256": "8ca4222968984f5d22b9008d336746c43b8c75de630173c1c4e6b3df7380c1f2",
+          "pid": 13871,
+          "status": "success",
+          "solve_wall_time_ms": 178.84445500021684,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.851643355477329e-05,
+            "rotation_error_rad": 1.4486740136173058e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/9/426732a9e1",
+          "case_sha256": "426732a9e1ef36fd5a0cbf0abfc15f5db359a5f179a97a548fadbbd7df52ea8f",
+          "pid": 13868,
+          "status": "success",
+          "solve_wall_time_ms": 122.8722400001061,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.637102331806859e-05,
+            "rotation_error_rad": 6.230189072091456e-06,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/10/997c231f01",
+          "case_sha256": "997c231f0132e41e379273dd55bd39fc22aa7a8d1e9e17b522ccae9c04989027",
+          "pid": 13871,
+          "status": "success",
+          "solve_wall_time_ms": 151.20077499977924,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.774995159342987e-05,
+            "rotation_error_rad": 1.425424119116428e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/11/81bc99a0df",
+          "case_sha256": "81bc99a0df92b8660da7d6e1231fcf47bc4e05d68c48781d0a5a3b1c6d85e03b",
+          "pid": 13868,
+          "status": "success",
+          "solve_wall_time_ms": 119.20009200002823,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.776449036919506e-05,
+            "rotation_error_rad": 8.281339562279034e-06,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/12/b2897311ef",
+          "case_sha256": "b2897311efaf1541a625ed9f4841211fe66df1bf7cadcd4df1f70fc26c1552fb",
+          "pid": 13871,
+          "status": "success",
+          "solve_wall_time_ms": 179.29016200014303,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.548855108181036e-05,
+            "rotation_error_rad": 1.3586317630896338e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/13/eba0de3367",
+          "case_sha256": "eba0de33670c9364f052c2eb1e77930ec309bb3f477c370fe248d58a34d7dcb8",
+          "pid": 13868,
+          "status": "success",
+          "solve_wall_time_ms": 183.9232969996374,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.769669729956659e-05,
+            "rotation_error_rad": 1.3153826205755366e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/14/1bdc2b8b5d",
+          "case_sha256": "1bdc2b8b5dde97976a6cffda4c8d1fe9f3712d41f160231358de42ae156728c2",
+          "pid": 13871,
+          "status": "success",
+          "solve_wall_time_ms": 129.66160199994192,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.624330760523869e-05,
+            "rotation_error_rad": 1.365469036715889e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/15/ef0c531546",
+          "case_sha256": "ef0c5315469b650bec72a8c3403b5e0b8b6779958ea2389b00176235ab987a31",
+          "pid": 13868,
+          "status": "success",
+          "solve_wall_time_ms": 172.76891999972577,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.610675141086051e-05,
+            "rotation_error_rad": 1.3458066048254948e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/16/25e4978e7c",
+          "case_sha256": "25e4978e7ca4282b33215b3065d3cee59f9d7f68ed7534498191041ed2285757",
+          "pid": 13871,
+          "status": "success",
+          "solve_wall_time_ms": 102.08674499972403,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.324609596014008e-05,
+            "rotation_error_rad": 1.0696309545239019e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/17/bcb23a80ef",
+          "case_sha256": "bcb23a80efe514f7dc196af64ffa5e0c6b812fed416cc549f17bf3cdf6691a81",
+          "pid": 13868,
+          "status": "success",
+          "solve_wall_time_ms": 162.06720599984692,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.588178837053461e-05,
+            "rotation_error_rad": 1.3936175226555061e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/18/c64d60ed45",
+          "case_sha256": "c64d60ed4577ecaf26ae937a3e0f296a4ebe79c10efdbcaeb2a560975d20f571",
+          "pid": 13871,
+          "status": "success",
+          "solve_wall_time_ms": 151.92466900043655,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.734172247031026e-05,
+            "rotation_error_rad": 1.2731121459480708e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/19/bc5e48c36c",
+          "case_sha256": "bc5e48c36c8e61884899f275b44fc74bb83227aa289ca1d37d4437eb01c9db96",
+          "pid": 13868,
+          "status": "success",
+          "solve_wall_time_ms": 164.1991019996567,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.82455984517987e-05,
+            "rotation_error_rad": 1.2994523058866342e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/20/f9728b0868",
+          "case_sha256": "f9728b0868b10c63925bf587b072eb2fe5104d12dd14a0c8bed35a8187ddd5c0",
+          "pid": 13871,
+          "status": "success",
+          "solve_wall_time_ms": 119.62650100031169,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.702156853825744e-05,
+            "rotation_error_rad": 1.3310126220207686e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/21/6443153032",
+          "case_sha256": "644315303269a79dd800adf0e8bf4d5cfed8270cde895730e4f8feede2f1723e",
+          "pid": 13871,
+          "status": "success",
+          "solve_wall_time_ms": 134.5946660003392,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.574206473129219e-05,
+            "rotation_error_rad": 9.803851323960546e-06,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/22/8ff4506045",
+          "case_sha256": "8ff4506045d78e2766ef6d48f898681b33a232a066019ef310a09c0f10b64cc9",
+          "pid": 13868,
+          "status": "success",
+          "solve_wall_time_ms": 133.13506100075756,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.858627019214434e-05,
+            "rotation_error_rad": 1.2810913874783756e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/23/d121fdeeac",
+          "case_sha256": "d121fdeeac7ad974d6a0f0382679395e891e28ab48c921985fef155a98730f6c",
+          "pid": 13871,
+          "status": "success",
+          "solve_wall_time_ms": 138.78668200050015,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.550371831072311e-05,
+            "rotation_error_rad": 1.0795068051764098e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        }
+      ],
+      "batch_wall_speedup_vs_one_process": 2.0340823609231835
+    },
+    {
+      "workers": 4,
+      "pool_initialization_ms": 621.6090240004633,
+      "batch_wall_time_ms": 1136.9299380003213,
+      "queries": 24,
+      "successes": 24,
+      "successful_queries_per_second": 21.10948018680217,
+      "all_queries_per_second": 21.10948018680217,
+      "worker_pids": [
+        13881,
+        13876,
+        13880,
+        13879
+      ],
+      "observed_job_pids": [
+        13876,
+        13879,
+        13880,
+        13881
+      ],
+      "rows": [
+        {
+          "case_id": "panda/nearby/0/54ccc9c517",
+          "case_sha256": "54ccc9c517e163ed7c91fb97a36382ddec6a8afbf6131332f7d9a94b43ca8126",
+          "pid": 13881,
+          "status": "success",
+          "solve_wall_time_ms": 141.68805200006318,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.876361639330631e-05,
+            "rotation_error_rad": 1.3819748271956123e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/1/b66d13d58e",
+          "case_sha256": "b66d13d58efc2d7f4afac13604de2cbdb2d6b00e4dd07c95dc98e7866241622c",
+          "pid": 13876,
+          "status": "success",
+          "solve_wall_time_ms": 193.01541200002248,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.961741146981008e-05,
+            "rotation_error_rad": 1.4564135880680188e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/2/0649315f1e",
+          "case_sha256": "0649315f1e7f58f5c98034eb89d398b2f6c41aeed7869cec5f9eed16a16b0c59",
+          "pid": 13880,
+          "status": "success",
+          "solve_wall_time_ms": 143.28421200025332,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.6935017355035e-05,
+            "rotation_error_rad": 1.388682659178313e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/3/d17ba28698",
+          "case_sha256": "d17ba28698449f4640b8a03e6c61115dbacacd564feac09c35c23b7a6fb5e050",
+          "pid": 13879,
+          "status": "success",
+          "solve_wall_time_ms": 144.62524899954587,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.958800853122558e-05,
+            "rotation_error_rad": 1.4299471730636585e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/4/56598541a8",
+          "case_sha256": "56598541a81919aae73d99f09be3e641fe1bcb5a648016e420a8d8b3e79d7adc",
+          "pid": 13881,
+          "status": "success",
+          "solve_wall_time_ms": 139.92859900008625,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.629912695758936e-05,
+            "rotation_error_rad": 1.2546254357547802e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/5/54abf7a970",
+          "case_sha256": "54abf7a970e9aa6ac340aa1f084997563846f37394154013325245502253c09c",
+          "pid": 13880,
+          "status": "success",
+          "solve_wall_time_ms": 197.11544399979175,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.940266355712646e-05,
+            "rotation_error_rad": 1.4100733202467924e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/6/f10db9d98a",
+          "case_sha256": "f10db9d98abaa08273d6a774e42f85df14d6116000561a78eac01888e004dc57",
+          "pid": 13879,
+          "status": "success",
+          "solve_wall_time_ms": 172.80825200032268,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.799664429442108e-05,
+            "rotation_error_rad": 1.4098192801418353e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/7/f1acda30de",
+          "case_sha256": "f1acda30decad3d26144e0b30ba78815e76a7453d08b816e43be3eccbba7a656",
+          "pid": 13876,
+          "status": "success",
+          "solve_wall_time_ms": 170.20654599946283,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.707131739494575e-05,
+            "rotation_error_rad": 1.3057616758952277e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/8/8ca4222968",
+          "case_sha256": "8ca4222968984f5d22b9008d336746c43b8c75de630173c1c4e6b3df7380c1f2",
+          "pid": 13881,
+          "status": "success",
+          "solve_wall_time_ms": 176.42662700018263,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.851643355477329e-05,
+            "rotation_error_rad": 1.4486740136173058e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/9/426732a9e1",
+          "case_sha256": "426732a9e1ef36fd5a0cbf0abfc15f5db359a5f179a97a548fadbbd7df52ea8f",
+          "pid": 13879,
+          "status": "success",
+          "solve_wall_time_ms": 115.36429499938095,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.637102331806859e-05,
+            "rotation_error_rad": 6.230189072091456e-06,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/10/997c231f01",
+          "case_sha256": "997c231f0132e41e379273dd55bd39fc22aa7a8d1e9e17b522ccae9c04989027",
+          "pid": 13880,
+          "status": "success",
+          "solve_wall_time_ms": 155.69430100003956,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.774995159342987e-05,
+            "rotation_error_rad": 1.425424119116428e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/11/81bc99a0df",
+          "case_sha256": "81bc99a0df92b8660da7d6e1231fcf47bc4e05d68c48781d0a5a3b1c6d85e03b",
+          "pid": 13876,
+          "status": "success",
+          "solve_wall_time_ms": 116.04616599925066,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.776449036919506e-05,
+            "rotation_error_rad": 8.281339562279034e-06,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/12/b2897311ef",
+          "case_sha256": "b2897311efaf1541a625ed9f4841211fe66df1bf7cadcd4df1f70fc26c1552fb",
+          "pid": 13879,
+          "status": "success",
+          "solve_wall_time_ms": 185.56590900061565,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.548855108181036e-05,
+            "rotation_error_rad": 1.3586317630896338e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/13/eba0de3367",
+          "case_sha256": "eba0de33670c9364f052c2eb1e77930ec309bb3f477c370fe248d58a34d7dcb8",
+          "pid": 13881,
+          "status": "success",
+          "solve_wall_time_ms": 170.2835910000431,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.769669729956659e-05,
+            "rotation_error_rad": 1.3153826205755366e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/14/1bdc2b8b5d",
+          "case_sha256": "1bdc2b8b5dde97976a6cffda4c8d1fe9f3712d41f160231358de42ae156728c2",
+          "pid": 13876,
+          "status": "success",
+          "solve_wall_time_ms": 142.01557300020795,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.624330760523869e-05,
+            "rotation_error_rad": 1.365469036715889e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/15/ef0c531546",
+          "case_sha256": "ef0c5315469b650bec72a8c3403b5e0b8b6779958ea2389b00176235ab987a31",
+          "pid": 13880,
+          "status": "success",
+          "solve_wall_time_ms": 168.8173270003972,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.610675141086051e-05,
+            "rotation_error_rad": 1.3458066048254948e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/16/25e4978e7c",
+          "case_sha256": "25e4978e7ca4282b33215b3065d3cee59f9d7f68ed7534498191041ed2285757",
+          "pid": 13879,
+          "status": "success",
+          "solve_wall_time_ms": 106.65869199965528,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.324609596014008e-05,
+            "rotation_error_rad": 1.0696309545239019e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/17/bcb23a80ef",
+          "case_sha256": "bcb23a80efe514f7dc196af64ffa5e0c6b812fed416cc549f17bf3cdf6691a81",
+          "pid": 13876,
+          "status": "success",
+          "solve_wall_time_ms": 165.89148699949874,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.588178837053461e-05,
+            "rotation_error_rad": 1.3936175226555061e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/18/c64d60ed45",
+          "case_sha256": "c64d60ed4577ecaf26ae937a3e0f296a4ebe79c10efdbcaeb2a560975d20f571",
+          "pid": 13881,
+          "status": "success",
+          "solve_wall_time_ms": 147.0156979994499,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.734172247031026e-05,
+            "rotation_error_rad": 1.2731121459480708e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/19/bc5e48c36c",
+          "case_sha256": "bc5e48c36c8e61884899f275b44fc74bb83227aa289ca1d37d4437eb01c9db96",
+          "pid": 13880,
+          "status": "success",
+          "solve_wall_time_ms": 172.39114600033645,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.82455984517987e-05,
+            "rotation_error_rad": 1.2994523058866342e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/20/f9728b0868",
+          "case_sha256": "f9728b0868b10c63925bf587b072eb2fe5104d12dd14a0c8bed35a8187ddd5c0",
+          "pid": 13879,
+          "status": "success",
+          "solve_wall_time_ms": 122.53486000008706,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.702156853825744e-05,
+            "rotation_error_rad": 1.3310126220207686e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/21/6443153032",
+          "case_sha256": "644315303269a79dd800adf0e8bf4d5cfed8270cde895730e4f8feede2f1723e",
+          "pid": 13881,
+          "status": "success",
+          "solve_wall_time_ms": 131.1375590003081,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.574206473129219e-05,
+            "rotation_error_rad": 9.803851323960546e-06,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/22/8ff4506045",
+          "case_sha256": "8ff4506045d78e2766ef6d48f898681b33a232a066019ef310a09c0f10b64cc9",
+          "pid": 13876,
+          "status": "success",
+          "solve_wall_time_ms": 139.94679500046914,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.858627019214434e-05,
+            "rotation_error_rad": 1.2810913874783756e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        },
+        {
+          "case_id": "panda/nearby/23/d121fdeeac",
+          "case_sha256": "d121fdeeac7ad974d6a0f0382679395e891e28ab48c921985fef155a98730f6c",
+          "pid": 13880,
+          "status": "success",
+          "solve_wall_time_ms": 138.85810600004334,
+          "assessment": {
+            "endpoint_feasible": true,
+            "position_error_m": 9.550371831072311e-05,
+            "rotation_error_rad": 1.0795068051764098e-05,
+            "closure_position_m": 0.0,
+            "closure_rotation_rad": 0.0,
+            "joint_limit_violation": 0.0,
+            "min_clearance_m": null
+          },
+          "failure": null
+        }
+      ],
+      "batch_wall_speedup_vs_one_process": 3.934932133873209
+    }
+  ]
+}

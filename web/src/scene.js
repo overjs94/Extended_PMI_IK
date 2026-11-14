@@ -5,6 +5,7 @@ import {ColladaLoader} from 'three/addons/loaders/ColladaLoader.js';
 import {OBJLoader} from 'three/addons/loaders/OBJLoader.js';
 
 export function createScene(container){
+  const assetURL=path=>import.meta.env.BASE_URL+path.replace(/^\//,'');
   const scene=new THREE.Scene();
   const camera=new THREE.PerspectiveCamera(40,1,.01,100);camera.up.set(0,0,1);
   const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setClearColor(0,0);renderer.outputColorSpace=THREE.SRGBColorSpace;
@@ -35,7 +36,7 @@ export function createScene(container){
       let geometry;let shared=false;
       if(v.type==='mesh'){
         if(v.filename.startsWith('/models/external/')){
-          const url=v.filename;
+          const url=assetURL(v.filename);
           if(url.endsWith('.stl')){
             if(!cache.has(url))cache.set(url,loader.loadAsync(url).then(g=>{g.computeVertexNormals();return g;}));
             geometry=await cache.get(url);shared=true;
@@ -50,7 +51,7 @@ export function createScene(container){
         const match=v.filename.match(/(?:^|\/)link([0-7])\.(?:dae|stl)$/i);
         if(!match||!v.filename.startsWith('package://franka_description/'))return;
         if(mode==='visual'&&v.filename.endsWith('.dae')){
-          const url=`/models/franka_description/meshes/visual/link${match[1]}.dae`;
+          const url=assetURL(`/models/franka_description/meshes/visual/link${match[1]}.dae`);
           // URDF defines the mesh coordinate frame. ColladaLoader's automatic
           // file up-axis rotation would rotate every link a second time.
           if(!cache.has(url))cache.set(url,collada.loadAsync(url).then(c=>{c.scene.quaternion.identity();c.scene.updateMatrix();return c.scene;}));
@@ -59,7 +60,7 @@ export function createScene(container){
           if(v.scale)wrapper.matrix.scale(new THREE.Vector3(...v.scale.split(/\s+/).map(Number)));
           const visual=template.clone(true);visual.traverse(o=>{if(o.isMesh){o.userData.shared=true;o.material=Array.isArray(o.material)?o.material.map(m=>m.clone()):o.material.clone();}});wrapper.add(visual);frames[v.link]?.add(wrapper);return;
         }
-        const url=`/models/franka_description/meshes/collision/link${match[1]}.stl`;
+        const url=assetURL(`/models/franka_description/meshes/collision/link${match[1]}.stl`);
         if(!cache.has(url))cache.set(url,loader.loadAsync(url).then(g=>{g.computeVertexNormals();return g;}));
         try{geometry=await cache.get(url);shared=true;}catch{return;}
         }
