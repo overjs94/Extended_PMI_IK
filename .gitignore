@@ -9,3 +9,4 @@ results/
 generated/
 *.log
 models/external/
+.benchmark-venv/

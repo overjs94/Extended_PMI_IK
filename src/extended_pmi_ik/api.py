@@ -3,6 +3,10 @@ from functools import lru_cache
 from threading import Lock
 from typing import Literal
 from time import perf_counter
+import importlib.util
+import json
+import os
+from urllib.parse import urlsplit
 import numpy as np
 from fastapi import FastAPI,HTTPException
 from fastapi.staticfiles import StaticFiles
@@ -23,6 +27,8 @@ class RunRequest(BaseModel):
     dt: float = Field(.04,ge=.001,le=.1)
     contraction: float = Field(.25,ge=0,le=1)
     preview: bool = True
+    splitting_backend: Literal['numpy','numba'] = 'numpy'
+    cpu_workers: int = Field(1,ge=1,le=4)
 
 
 class BenchmarkRequest(BaseModel):
@@ -40,6 +46,8 @@ class CustomRun(ImportRequest):
     target: list[list[float]]
     method: Literal['reduced-osqp','reduced-qpoases','maximal-qp','maximal-skew','maximal-schur','maximal-admm','maximal-drs','maximal-qp-qpoases','maximal-qp-schur','maximal-qp-drs'] = 'reduced-osqp'
     iterations: int = Field(600,ge=1,le=800)
+    splitting_backend: Literal['numpy','numba'] = 'numpy'
+    cpu_workers: int = Field(1,ge=1,le=4)
 
 
 def guarded(fn):
@@ -66,7 +74,22 @@ def cached_scenario(scenario,seed):
 
 @app.get('/api/health')
 def health():
-    return {'status':'ok','qp_backends':['osqp','qpoases'],'gpu':False,'ros':False,'collision_checking':'explicit sphere proxies in obstacle scenario'}
+    return {'status':'ok','qp_backends':['osqp','qpoases'],'gpu':False,'ros':False,'collision_checking':'explicit sphere/box proxies',
+            'cpu_kernels':{'numpy':True,'numba':importlib.util.find_spec('numba') is not None}}
+
+
+@app.get('/api/deployment')
+def deployment():
+    parsed=urlsplit(os.environ.get('RENDER_EXTERNAL_URL',''))
+    public=f'https://{parsed.hostname}' if parsed.scheme=='https' and parsed.hostname and parsed.hostname.endswith('.onrender.com') else None
+    return dict(public_url=public,source='hosting runtime' if public else None,external_reachability_verified=False,
+                notice='A source repository or local server is not a public website deployment.')
+
+
+@app.get('/api/research')
+def research():
+    files={'literature':'benchmarks/literature.json','pilot':'benchmarks/reports/pilot.json','cpu_kernels':'benchmarks/reports/cpu-kernels.json','cpu_batch':'benchmarks/reports/cpu-batch.json'}
+    return {key:json.loads((ROOT/path).read_text()) if (ROOT/path).exists() else None for key,path in files.items()}
 
 
 @app.get('/api/catalog')
@@ -88,7 +111,8 @@ def run(req:RunRequest):
     def fn():
         start = perf_counter()
         m,q,t,g = cached_scenario(req.scenario,req.seed)
-        result = solve_ik(m,q,t,g,req.method,Settings(iterations=req.iterations,dt=req.dt,contraction=req.contraction,preview=req.preview))
+        result = solve_ik(m,q,t,g,req.method,Settings(iterations=req.iterations,dt=req.dt,contraction=req.contraction,preview=req.preview,
+                                                   splitting_backend=req.splitting_backend,cpu_workers=req.cpu_workers))
         result.update(scenario=req.scenario,seed=req.seed,request_compute_ms=(perf_counter()-start)*1000)
         return result
     return guarded(fn)
@@ -128,7 +152,7 @@ def custom_solve(req:CustomRun):
         if T.shape!=(4,4) or not np.all(np.isfinite(T)) or not np.allclose(T[3],[0,0,0,1]) or not np.allclose(T[:3,:3].T@T[:3,:3],np.eye(3),atol=1e-6) or np.linalg.det(T[:3,:3])<.99:
             raise ValueError('Target must be a finite SE(3) matrix')
         if req.link not in m.links: raise ValueError('Unknown target link')
-        return solve_ik(m,q,{req.link:T},method=req.method,settings=Settings(iterations=req.iterations))
+        return solve_ik(m,q,{req.link:T},method=req.method,settings=Settings(iterations=req.iterations,splitting_backend=req.splitting_backend,cpu_workers=req.cpu_workers))
     return guarded(fn)
 
 

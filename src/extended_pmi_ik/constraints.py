@@ -3,6 +3,7 @@ import casadi as ca
 import numpy as np
 from scipy.linalg import null_space
 from .kinematics import homogeneous
+from .distance import symbolic_point_distance
 
 
 def vee(R):
@@ -56,8 +57,7 @@ class ConstraintGraph:
             T = poses[body]@ca.DM(offset)
             center = T[:3,:3]@ca.DM(sphere.get('center',[0,0,0]))+T[:3,3]
             for obstacle in model.obstacles:
-                d = center-ca.DM(obstacle['center'])
-                limits.append(ca.sqrt(ca.dot(d,d)+1e-16)-sphere['radius']-obstacle['radius'])
+                limits.append(symbolic_point_distance(center,obstacle)-sphere['radius'])
         g = ca.vertcat(*equalities) if equalities else ca.SX.zeros(0,1)
         h = ca.vertcat(*limits) if limits else ca.SX.zeros(0,1)
         J,Jh = ca.jacobian(g,u),ca.jacobian(h,u)

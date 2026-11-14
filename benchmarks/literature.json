@@ -1,0 +1,267 @@
+{
+  "review_date": "2026-11-14",
+  "scope": "Source-verified candidate selection, not an exhaustive 2026 SOTA ranking. Original paper full texts/datasets are not all available.",
+  "entries": [
+    {
+      "id": "curobo-v2",
+      "name": "cuRoboV2-Fast",
+      "group": "NVIDIA Research",
+      "kind": "paper / GPU motion generation",
+      "year": 2026,
+      "paper": "https://arxiv.org/abs/2611.06913",
+      "paper_title": "cuRoboV2-Fast: Fast Torque-Limited Collision-Free Motion Planning",
+      "repository": "https://github.com/NVlabs/curobo",
+      "track": [
+        "pose-ik",
+        "collision-motion",
+        "whole-body"
+      ],
+      "scenarios": [
+        "high-DoF whole-body motion",
+        "collision-free tool-pose motion",
+        "torque-limited trajectories"
+      ],
+      "adapter_status": "not_run",
+      "blocker": "No CUDA device/driver in the selected environment; V2 adapter not yet validated. No CPU substitute is reported as cuRobo.",
+      "peer_review_status": "2026 preprint; not asserted peer reviewed",
+      "source_commit": "8991ec140f1f03cca2725118575c857aa3aef70e",
+      "source_reviewed": "Official README/API/usage source inspected; paper full text not claimed read unless separately recorded",
+      "readme_sha256": "78b99440e1e14583af431a1e3becb22448b090cbd734f2ac5f3b1f88f12d43df",
+      "upstream_protocol": "benchmarks/protocols/curobo-v2-ik.json",
+      "additional_verified_sources": [
+        {
+          "url": "https://github.com/NVlabs/curobo/blob/8991ec140f1f03cca2725118575c857aa3aef70e/docs/reference/benchmarks.rst",
+          "sha256": "036b85ac046e17b3ef246528cd7837877e7ce75a4af619db43b930c809d74a24"
+        },
+        {
+          "url": "https://github.com/NVlabs/curobo/blob/8991ec140f1f03cca2725118575c857aa3aef70e/benchmark/ik_benchmark.py",
+          "sha256": "d2dc836edd660ba7fcbc9226c27b9c745f019be2cc152157f9b4fb7f0685f294"
+        },
+        {
+          "url": "https://github.com/NVlabs/curobo/blob/8991ec140f1f03cca2725118575c857aa3aef70e/curobo/content/configs/robot/unitree_g1_29dof.yml",
+          "sha256": "28b1078ef779e372f678b4c49017fdfeff0bc35419b4b42b6ac5c8c42598d12e"
+        },
+        {
+          "url": "https://github.com/NVlabs/curobo/blob/8991ec140f1f03cca2725118575c857aa3aef70e/curobo/content/configs/scene/collision_table.yml",
+          "sha256": "a6e2669504ae7624fc8ae5fa58cb7021c26f7d7681796153382f5edcd45e157b"
+        }
+      ]
+    },
+    {
+      "id": "drake-global",
+      "name": "Drake GlobalInverseKinematics",
+      "group": "MIT RobotLocomotion",
+      "kind": "paper / mixed-integer global IK",
+      "year": 2019,
+      "paper_title": "Global Inverse Kinematics via Mixed-integer Convex Optimization",
+      "paper": "https://github.com/RobotLocomotion/drake/blob/9977d90894fe487195e9ac95a93ca4330a6ae81b/multibody/inverse_kinematics/global_inverse_kinematics.h",
+      "repository": "https://github.com/RobotLocomotion/drake",
+      "track": [
+        "global-ik"
+      ],
+      "scenarios": [
+        "world/relative pose constraints",
+        "certified infeasibility and reconstructed posture checks"
+      ],
+      "adapter_status": "not_run",
+      "blocker": "Global MICP adapter and solver availability not validated; SciPy SLSQP is not presented as Drake Global IK.",
+      "peer_review_status": "IJRR 2019, identified in official API documentation",
+      "source_commit": "9977d90894fe487195e9ac95a93ca4330a6ae81b",
+      "source_reviewed": "Official README/API/usage source inspected; paper full text not claimed read unless separately recorded",
+      "readme_sha256": "52c891e1ed9100a284adf548a676ca97ba33f767591f8aef0028ee65c37d9374"
+    },
+    {
+      "id": "ikflow",
+      "name": "IKFlow",
+      "group": "Ames, Morgan and Konidaris",
+      "kind": "paper / learned multi-solution IK",
+      "year": 2022,
+      "paper_title": "IKFlow: Generating Diverse Inverse Kinematics Solutions",
+      "paper": "https://doi.org/10.1109/LRA.2022.3181374",
+      "repository": "https://github.com/jstmn/ikflow",
+      "track": [
+        "pose-ik",
+        "multi-solution-ik"
+      ],
+      "scenarios": [
+        "Franka Panda diverse IK solutions",
+        "sample count / refinement / accuracy trade-off"
+      ],
+      "adapter_status": "not_run",
+      "blocker": "Pretrained-model and robot-configuration adapter not validated; learned approximate solutions must pass common FK and collision validation.",
+      "peer_review_status": "IEEE RA-L 2022, citation verified in author repository",
+      "source_commit": "2f4636e909a2f541e14477c5515237b99050218e",
+      "source_reviewed": "Official README/API/usage source inspected; paper full text not claimed read unless separately recorded",
+      "readme_sha256": "de0d60e2ffa9663095d2727e6183597da4217042d8320837e40e39f46752004e"
+    },
+    {
+      "id": "trac-ik",
+      "name": "TRAC-IK",
+      "group": "TRACLabs",
+      "kind": "paper / established single-chain IK baseline",
+      "year": 2015,
+      "paper_title": "TRAC-IK: An Open-Source Library for Improved Solving of Generic Inverse Kinematics",
+      "paper": "https://www.researchgate.net/publication/282852814_TRAC-IK_An_Open-Source_Library_for_Improved_Solving_of_Generic_Inverse_Kinematics",
+      "repository": "https://github.com/TRACLabs/trac_ik",
+      "track": [
+        "pose-ik"
+      ],
+      "scenarios": [
+        "10000 reachable FK-sampled targets per chain",
+        "nominal midpoint initial configuration",
+        "joint limits",
+        "5 ms timeout / 1e-5 componentwise tolerances"
+      ],
+      "adapter_status": "not_run",
+      "blocker": "Official KDL/NLopt native adapter not installed. Modern reconstructed common cases use different robots/norm tolerances and are not original-paper reproductions.",
+      "peer_review_status": "Humanoids 2015; original and updated protocol documented in official repository",
+      "source_commit": "90162ac2ecc6ea8f88c6e99df6ee01efd217a3fb",
+      "source_reviewed": "Official README/API/usage source inspected; paper full text not claimed read unless separately recorded",
+      "readme_sha256": "49cb5defb41d8f6eddd48350aa439460befee6b088726ae6d9e0eebf9eb88630"
+    },
+    {
+      "id": "trajopt",
+      "name": "TrajOpt / Tesseract",
+      "group": "TrajOpt research line / Tesseract Robotics maintainers",
+      "kind": "paper-associated trajectory optimization software",
+      "year": null,
+      "paper_title": "Sequential convex optimization motion planning",
+      "paper": "https://github.com/tesseract-robotics/trajopt",
+      "repository": "https://github.com/tesseract-robotics/trajopt",
+      "track": [
+        "collision-motion"
+      ],
+      "scenarios": [
+        "pick-and-place",
+        "PR2 table clutter",
+        "trajectory smoothness and collision avoidance"
+      ],
+      "adapter_status": "not_run",
+      "blocker": "Trajectory adapter and full collision model not validated; static IK iteration paths are not compared as certified robot trajectories.",
+      "peer_review_status": "Maintained implementation inspected; bibliographic record of the original paper still requires full-text verification",
+      "source_commit": "963baf7d04176b4fbfe0120c813693f1a777cf5d",
+      "source_reviewed": "Official README/API/usage source inspected; paper full text not claimed read unless separately recorded",
+      "readme_sha256": "da7e05c2748f3d31ccad44e5cb6ff05cc6e7a94ac2b9cb3c295ab644d2e9bd82"
+    },
+    {
+      "id": "pink",
+      "name": "Pink 4.4.0 / native OSQP",
+      "group": "Pink / Pinocchio maintainers",
+      "kind": "software baseline, not a peer-reviewed algorithm paper",
+      "year": 2026,
+      "paper_title": "Pink: Python inverse kinematics based on Pinocchio",
+      "paper": "https://github.com/pink-kinematics/pink",
+      "repository": "https://github.com/stephane-caron/pink",
+      "track": [
+        "pose-ik",
+        "constrained-ik"
+      ],
+      "scenarios": [
+        "dual-arm relative-frame tasks",
+        "Draco 3 humanoid",
+        "whole-body and end-effector collision barriers"
+      ],
+      "adapter_status": "implemented",
+      "blocker": null,
+      "peer_review_status": "Software citation only",
+      "source_commit": "2c333161fc260de93fb7be1dd8d6519d2ecc2df2",
+      "source_reviewed": "Official README/API/usage source inspected; paper full text not claimed read unless separately recorded",
+      "readme_sha256": "6e4acd82f022d48ef51c2ef72a109b9a1ee0cc4c0481e87c835aea00c317e0b2"
+    },
+    {
+      "id": "mink",
+      "name": "Mink 1.4.0 / native OSQP",
+      "group": "Kevin Zakka / Mink maintainers",
+      "kind": "software baseline, not a peer-reviewed algorithm paper",
+      "year": 2026,
+      "paper_title": "Mink: Python inverse kinematics based on MuJoCo",
+      "paper": "https://github.com/kevinzakka/mink",
+      "repository": "https://github.com/kevinzakka/mink",
+      "track": [
+        "pose-ik",
+        "constrained-ik"
+      ],
+      "scenarios": [
+        "Unitree G1 / H2 bookshelf",
+        "dual Panda / dual iiwa",
+        "iiwa + Allegro",
+        "hard relative constraints"
+      ],
+      "adapter_status": "implemented",
+      "blocker": null,
+      "peer_review_status": "Software citation only",
+      "source_commit": "5f800f0a369d05bab88b5e5582cf95122d3b82a5",
+      "source_reviewed": "Official README/API/usage source inspected; paper full text not claimed read unless separately recorded",
+      "readme_sha256": "6445751be3fced2957e7b5650dc4fa17b6aca11a02e9f5742b075c256105fec5"
+    },
+    {
+      "id": "motionbenchmaker",
+      "name": "MotionBenchMaker",
+      "group": "Rice Kavraki Lab and collaborators",
+      "kind": "paper / benchmark dataset generator",
+      "year": 2022,
+      "paper_title": "MotionBenchMaker: A Tool to Generate and Benchmark Motion Planning Datasets",
+      "paper": "https://doi.org/10.1109/LRA.2021.3133603",
+      "repository": "https://github.com/KavrakiLab/motion_bench_maker",
+      "track": [
+        "collision-motion"
+      ],
+      "scenarios": [
+        "shelf with perturbed object poses",
+        "tabletop object-relative start/goal queries",
+        "Panda / UR5 / Fetch / Baxter / Yumi / Shadow datasets"
+      ],
+      "adapter_status": "dataset_not_imported",
+      "blocker": "Official Panda dataset download HEAD rejected by the environment egress proxy (403 at Dropbox). Current box clutter cases are synthetic adaptations, not imported MBM scenes.",
+      "peer_review_status": "IEEE RA-L 2022; citation verified in official repository",
+      "source_commit": "f50542777f4d1ae013b0de430bafbf51fdbdc40e",
+      "source_reviewed": "Official README/API/usage source inspected; paper full text not claimed read unless separately recorded",
+      "readme_sha256": "7993c7c6e3a218c68971dda1492ed7b8f5088a6dab5264572443193b0ab59950"
+    },
+    {
+      "id": "robometrics",
+      "name": "Robometrics / Motion Policy Networks",
+      "group": "Motion Policy Networks authors",
+      "kind": "paper-associated evaluation dataset software",
+      "year": 2022,
+      "paper_title": "Motion Policy Networks",
+      "paper": "https://github.com/fishbotics/robometrics",
+      "repository": "https://github.com/fishbotics/robometrics",
+      "track": [
+        "collision-motion"
+      ],
+      "scenarios": [
+        "manipulation motion evaluation"
+      ],
+      "adapter_status": "dataset_not_imported",
+      "blocker": "Original task dataset and complete collision evaluator not imported; no reproduction claim.",
+      "peer_review_status": "CoRL 2022, citation verified in author repository",
+      "source_commit": "81e3d1d605de84100d8ab880b43096aba221a48b",
+      "source_reviewed": "Official README/API/usage source inspected; paper full text not claimed read unless separately recorded",
+      "readme_sha256": "5e59bad6b6a512f7a0a33913b55046b067141d6e4734d4de413e5bf5804c7a0f"
+    },
+    {
+      "id": "tsid",
+      "name": "TSID",
+      "group": "LAAS-CNRS / Inria / Trento and collaborators",
+      "kind": "inverse-dynamics control software; related work",
+      "year": 2016,
+      "paper_title": "Implementing Torque Control with High-Ratio Gear Boxes and without Joint-Torque Sensors",
+      "paper": "https://github.com/stack-of-tasks/tsid",
+      "repository": "https://github.com/stack-of-tasks/tsid",
+      "track": [
+        "inverse-dynamics-control"
+      ],
+      "scenarios": [
+        "humanoid torque control",
+        "quadruped and manipulator tasks"
+      ],
+      "adapter_status": "separate_problem",
+      "blocker": "Inverse dynamics includes acceleration/torque/contact dynamics and is not ranked directly against position-level IK.",
+      "peer_review_status": "IJHR 2016, citation listed by TSID maintainers",
+      "source_commit": "070e00fc9788b33a7717e455866659464be0314b",
+      "source_reviewed": "Official README/API/usage source inspected; paper full text not claimed read unless separately recorded",
+      "readme_sha256": "e5a195a7976fe29a705866d6cfa2640a171e7d4db336fe2042b24dbd99b381a2"
+    }
+  ]
+}

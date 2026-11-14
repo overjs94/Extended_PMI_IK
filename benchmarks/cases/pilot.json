@@ -1,0 +1,2249 @@
+{
+  "spec": {
+    "name": "literature-informed matched-input pilot",
+    "scope": "Small deterministic distinct-seed pilot, not original paper reproduction or a publication-size benchmark",
+    "cases": [
+      {
+        "scenario": "panda",
+        "recipe": "nearby",
+        "seeds": [
+          7,
+          11,
+          19
+        ]
+      },
+      {
+        "scenario": "panda",
+        "recipe": "reachable-random",
+        "seeds": [
+          7,
+          11,
+          19
+        ]
+      },
+      {
+        "scenario": "kuka-iiwa7",
+        "recipe": "joint-limits",
+        "seeds": [
+          7,
+          11,
+          19
+        ]
+      },
+      {
+        "scenario": "ur5",
+        "recipe": "near-singular",
+        "seeds": [
+          7,
+          11,
+          19
+        ]
+      },
+      {
+        "scenario": "panda",
+        "recipe": "unreachable",
+        "seeds": [
+          7
+        ]
+      },
+      {
+        "scenario": "dual",
+        "recipe": "closed-loop",
+        "seeds": [
+          7,
+          11
+        ]
+      },
+      {
+        "scenario": "quad",
+        "recipe": "closed-loop",
+        "seeds": [
+          7
+        ]
+      },
+      {
+        "scenario": "unitree-g1",
+        "recipe": "closed-loop",
+        "seeds": [
+          7,
+          11
+        ]
+      },
+      {
+        "scenario": "ergocub",
+        "recipe": "closed-loop",
+        "seeds": [
+          7
+        ]
+      },
+      {
+        "scenario": "panda",
+        "recipe": "clutter-boxes",
+        "seeds": [
+          7,
+          11,
+          19
+        ]
+      }
+    ]
+  },
+  "cases": [
+    {
+      "schema_version": 1,
+      "scenario": "panda",
+      "recipe": "nearby",
+      "seed": 7,
+      "source": "project-local extension",
+      "reproduction": "literature-informed adaptation, not original paper dataset reproduction",
+      "urdf_sha256": "99ffc011012d3128138b00ed68c054e128e029c6d17a8992537d03e35238d2aa",
+      "q_initial": [
+        0.0,
+        -0.55,
+        0.0,
+        -1.9,
+        0.0,
+        1.45,
+        0.7
+      ],
+      "targets": {
+        "a0_panda_link8": [
+          [
+            0.9043939311746801,
+            -0.42624428067816406,
+            0.01968325287045587,
+            0.41175299428682305
+          ],
+          [
+            -0.42284027994219986,
+            -0.9014516005927897,
+            -0.09268823791128832,
+            0.0507012185962044
+          ],
+          [
+            0.05725133110076869,
+            0.07550380770432742,
+            -0.9955006077895374,
+            0.6380557185140938
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "grasps": [],
+      "obstacles": [],
+      "collision_spheres": [],
+      "expected_feasible": true,
+      "feasibility_certificate": null,
+      "sha256": "f1acda30decad3d26144e0b30ba78815e76a7453d08b816e43be3eccbba7a656",
+      "id": "panda/nearby/7/f1acda30de"
+    },
+    {
+      "schema_version": 1,
+      "scenario": "panda",
+      "recipe": "nearby",
+      "seed": 11,
+      "source": "project-local extension",
+      "reproduction": "literature-informed adaptation, not original paper dataset reproduction",
+      "urdf_sha256": "99ffc011012d3128138b00ed68c054e128e029c6d17a8992537d03e35238d2aa",
+      "q_initial": [
+        0.0,
+        -0.55,
+        0.0,
+        -1.9,
+        0.0,
+        1.45,
+        0.7
+      ],
+      "targets": {
+        "a0_panda_link8": [
+          [
+            0.784893635416933,
+            -0.6149683989837496,
+            0.0758673139985483,
+            0.3764377887041666
+          ],
+          [
+            -0.6039596081682401,
+            -0.7866492901421442,
+            -0.12812371373062223,
+            -0.0382795085836088
+          ],
+          [
+            0.13847300380672214,
+            0.054742694217806524,
+            -0.988852094423893,
+            0.6600075142390249
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "grasps": [],
+      "obstacles": [],
+      "collision_spheres": [],
+      "expected_feasible": true,
+      "feasibility_certificate": null,
+      "sha256": "81bc99a0df92b8660da7d6e1231fcf47bc4e05d68c48781d0a5a3b1c6d85e03b",
+      "id": "panda/nearby/11/81bc99a0df"
+    },
+    {
+      "schema_version": 1,
+      "scenario": "panda",
+      "recipe": "nearby",
+      "seed": 19,
+      "source": "project-local extension",
+      "reproduction": "literature-informed adaptation, not original paper dataset reproduction",
+      "urdf_sha256": "99ffc011012d3128138b00ed68c054e128e029c6d17a8992537d03e35238d2aa",
+      "q_initial": [
+        0.0,
+        -0.55,
+        0.0,
+        -1.9,
+        0.0,
+        1.45,
+        0.7
+      ],
+      "targets": {
+        "a0_panda_link8": [
+          [
+            0.643169075949655,
+            -0.7595444667505892,
+            -0.09708626458274226,
+            0.40774961871966686
+          ],
+          [
+            -0.7642963156477174,
+            -0.6445281552089548,
+            -0.02084703888485353,
+            -0.049085762673409396
+          ],
+          [
+            -0.04674057797451847,
+            0.08761084505644713,
+            -0.9950576155173644,
+            0.6072752014427224
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "grasps": [],
+      "obstacles": [],
+      "collision_spheres": [],
+      "expected_feasible": true,
+      "feasibility_certificate": null,
+      "sha256": "bc5e48c36c8e61884899f275b44fc74bb83227aa289ca1d37d4437eb01c9db96",
+      "id": "panda/nearby/19/bc5e48c36c"
+    },
+    {
+      "schema_version": 1,
+      "scenario": "panda",
+      "recipe": "reachable-random",
+      "seed": 7,
+      "source": "trac-ik-2015: reachable FK sampling / joint-limit stress; adapted models and error norms",
+      "reproduction": "literature-informed adaptation, not original paper dataset reproduction",
+      "urdf_sha256": "99ffc011012d3128138b00ed68c054e128e029c6d17a8992537d03e35238d2aa",
+      "q_initial": [
+        0.0,
+        0.0,
+        0.0,
+        -1.5708,
+        0.0,
+        1.8675,
+        0.0
+      ],
+      "targets": {
+        "a0_panda_link8": [
+          [
+            -0.05163832002280354,
+            -0.041723773657254784,
+            -0.9977938718077102,
+            -0.30596757397514396
+          ],
+          [
+            -0.5209211592183762,
+            -0.851309417619468,
+            0.06255734450075025,
+            0.39012347018969545
+          ],
+          [
+            -0.852041448395444,
+            0.5230022965381707,
+            0.022225391604958285,
+            0.4459005110140444
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "grasps": [],
+      "obstacles": [],
+      "collision_spheres": [],
+      "expected_feasible": true,
+      "feasibility_certificate": null,
+      "sha256": "15798896b0454e80607353edb6137897a94e49b6e300a58771c7d1e65b88005d",
+      "id": "panda/reachable-random/7/15798896b0"
+    },
+    {
+      "schema_version": 1,
+      "scenario": "panda",
+      "recipe": "reachable-random",
+      "seed": 11,
+      "source": "trac-ik-2015: reachable FK sampling / joint-limit stress; adapted models and error norms",
+      "reproduction": "literature-informed adaptation, not original paper dataset reproduction",
+      "urdf_sha256": "99ffc011012d3128138b00ed68c054e128e029c6d17a8992537d03e35238d2aa",
+      "q_initial": [
+        0.0,
+        0.0,
+        0.0,
+        -1.5708,
+        0.0,
+        1.8675,
+        0.0
+      ],
+      "targets": {
+        "a0_panda_link8": [
+          [
+            -0.9441108288370534,
+            0.14445730666513806,
+            0.29628842269597067,
+            0.10685867579538746
+          ],
+          [
+            0.1520695285753088,
+            0.9883661675324986,
+            0.002679058790697408,
+            -0.18127918969219683
+          ],
+          [
+            -0.29245444320696384,
+            0.04758576917708668,
+            -0.955094756147436,
+            0.20374131009087348
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "grasps": [],
+      "obstacles": [],
+      "collision_spheres": [],
+      "expected_feasible": true,
+      "feasibility_certificate": null,
+      "sha256": "50ae933bac5d9e710b0323114b2db8f8c53efa3f148e8f8d96ff1007fb67ff33",
+      "id": "panda/reachable-random/11/50ae933bac"
+    },
+    {
+      "schema_version": 1,
+      "scenario": "panda",
+      "recipe": "reachable-random",
+      "seed": 19,
+      "source": "trac-ik-2015: reachable FK sampling / joint-limit stress; adapted models and error norms",
+      "reproduction": "literature-informed adaptation, not original paper dataset reproduction",
+      "urdf_sha256": "99ffc011012d3128138b00ed68c054e128e029c6d17a8992537d03e35238d2aa",
+      "q_initial": [
+        0.0,
+        0.0,
+        0.0,
+        -1.5708,
+        0.0,
+        1.8675,
+        0.0
+      ],
+      "targets": {
+        "a0_panda_link8": [
+          [
+            -0.2191968127481721,
+            0.3695622187341976,
+            -0.9029820174097044,
+            -0.2664558547211037
+          ],
+          [
+            -0.9330316355621329,
+            0.1912410760238894,
+            0.3047602629633274,
+            -0.18847168103592993
+          ],
+          [
+            0.2853151316023992,
+            0.909313266880827,
+            0.30289380705657154,
+            0.21547039353379827
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "grasps": [],
+      "obstacles": [],
+      "collision_spheres": [],
+      "expected_feasible": true,
+      "feasibility_certificate": null,
+      "sha256": "af0e263bd55f6646417491c9b8c40534580d6626db9b95a94fbccc545c218024",
+      "id": "panda/reachable-random/19/af0e263bd5"
+    },
+    {
+      "schema_version": 1,
+      "scenario": "kuka-iiwa7",
+      "recipe": "joint-limits",
+      "seed": 7,
+      "source": "trac-ik-2015: reachable FK sampling / joint-limit stress; adapted models and error norms",
+      "reproduction": "literature-informed adaptation, not original paper dataset reproduction",
+      "urdf_sha256": "84d186750eaf8dfb127592f169cda1a924c03001ff3ed96b0b6cb480f3d02540",
+      "q_initial": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "targets": {
+        "iiwa_link_ee": [
+          [
+            -0.5209469931674527,
+            -0.02384181843576831,
+            -0.8532559979299684,
+            -0.4717964316772157
+          ],
+          [
+            -0.09563240337156104,
+            0.9949466881711845,
+            0.03058645325255293,
+            0.018901955770401588
+          ],
+          [
+            0.8482149926375795,
+            0.0975328426268168,
+            -0.5205945359624548,
+            0.4896030626887949
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "grasps": [],
+      "obstacles": [],
+      "collision_spheres": [],
+      "expected_feasible": true,
+      "feasibility_certificate": null,
+      "sha256": "6dc5577ef994875c182f268ecd24fe72e7e5451430036e2a286feb48301e4e31",
+      "id": "kuka-iiwa7/joint-limits/7/6dc5577ef9"
+    },
+    {
+      "schema_version": 1,
+      "scenario": "kuka-iiwa7",
+      "recipe": "joint-limits",
+      "seed": 11,
+      "source": "trac-ik-2015: reachable FK sampling / joint-limit stress; adapted models and error norms",
+      "reproduction": "literature-informed adaptation, not original paper dataset reproduction",
+      "urdf_sha256": "84d186750eaf8dfb127592f169cda1a924c03001ff3ed96b0b6cb480f3d02540",
+      "q_initial": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "targets": {
+        "iiwa_link_ee": [
+          [
+            -0.36937319586211464,
+            -0.04944420772450617,
+            0.9279648228791346,
+            0.17673800752410546
+          ],
+          [
+            -0.25110869336308606,
+            0.9667459641136453,
+            -0.04844238833358757,
+            -0.08464418164272845
+          ],
+          [
+            -0.8947110518464002,
+            -0.2509133539540579,
+            -0.3695059167475322,
+            -0.11085154266376149
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "grasps": [],
+      "obstacles": [],
+      "collision_spheres": [],
+      "expected_feasible": true,
+      "feasibility_certificate": null,
+      "sha256": "b000fea2e2d1da0fe503043040246f454e1c33226a11a0806427d8c30f50595b",
+      "id": "kuka-iiwa7/joint-limits/11/b000fea2e2"
+    },
+    {
+      "schema_version": 1,
+      "scenario": "kuka-iiwa7",
+      "recipe": "joint-limits",
+      "seed": 19,
+      "source": "trac-ik-2015: reachable FK sampling / joint-limit stress; adapted models and error norms",
+      "reproduction": "literature-informed adaptation, not original paper dataset reproduction",
+      "urdf_sha256": "84d186750eaf8dfb127592f169cda1a924c03001ff3ed96b0b6cb480f3d02540",
+      "q_initial": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "targets": {
+        "iiwa_link_ee": [
+          [
+            -0.40157893264484046,
+            -0.4654325366348607,
+            -0.7887375448762849,
+            -0.4605537480623783
+          ],
+          [
+            -0.15768061540582237,
+            0.8835095599279121,
+            -0.441075595608313,
+            -0.06805058650240224
+          ],
+          [
+            0.9021480944839778,
+            -0.052758045430303546,
+            -0.42818851486384163,
+            0.48875343838830276
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "grasps": [],
+      "obstacles": [],
+      "collision_spheres": [],
+      "expected_feasible": true,
+      "feasibility_certificate": null,
+      "sha256": "8c1cb4cee5fb00d166e880e70d5c3dee697d943d3653315bb57b98878fed99f7",
+      "id": "kuka-iiwa7/joint-limits/19/8c1cb4cee5"
+    },
+    {
+      "schema_version": 1,
+      "scenario": "ur5",
+      "recipe": "near-singular",
+      "seed": 7,
+      "source": "trac-ik-2015: reachable FK sampling / joint-limit stress; adapted models and error norms",
+      "reproduction": "literature-informed adaptation, not original paper dataset reproduction",
+      "urdf_sha256": "a8c45d481522f29bf266776d4dd2a14ee0348be01473d4c526628c4689eb38c9",
+      "q_initial": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "targets": {
+        "tool0": [
+          [
+            -0.9910413051241859,
+            0.1230588327031524,
+            -0.05190043575431258,
+            0.8014781410911052
+          ],
+          [
+            -0.0517558709132571,
+            0.004373308359097494,
+            0.9986501910078456,
+            0.20749023015153384
+          ],
+          [
+            0.1231197033937308,
+            0.9923897409121748,
+            0.0020348878362099637,
+            -0.07427357215659437
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "grasps": [],
+      "obstacles": [],
+      "collision_spheres": [],
+      "expected_feasible": true,
+      "feasibility_certificate": null,
+      "sha256": "587f0f4bc000668ba77166a292cbbe6029b89ab6dd09395a5db96c5a0b28efd4",
+      "id": "ur5/near-singular/7/587f0f4bc0"
+    },
+    {
+      "schema_version": 1,
+      "scenario": "ur5",
+      "recipe": "near-singular",
+      "seed": 11,
+      "source": "trac-ik-2015: reachable FK sampling / joint-limit stress; adapted models and error norms",
+      "reproduction": "literature-informed adaptation, not original paper dataset reproduction",
+      "urdf_sha256": "a8c45d481522f29bf266776d4dd2a14ee0348be01473d4c526628c4689eb38c9",
+      "q_initial": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "targets": {
+        "tool0": [
+          [
+            -0.9999513448813546,
+            0.009332497934416449,
+            0.003195677122963226,
+            0.8281003778812843
+          ],
+          [
+            0.003226653172886077,
+            0.0033059912138695686,
+            0.9999893295087682,
+            0.14238679783029706
+          ],
+          [
+            0.009321833471588187,
+            0.9999509862510251,
+            -0.0033359430945458547,
+            -0.011874596116500687
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "grasps": [],
+      "obstacles": [],
+      "collision_spheres": [],
+      "expected_feasible": true,
+      "feasibility_certificate": null,
+      "sha256": "18270f57d9b47ff941863337f22e7dd4635ef5edae4c5b99173a5b912d7f87b4",
+      "id": "ur5/near-singular/11/18270f57d9"
+    },
+    {
+      "schema_version": 1,
+      "scenario": "ur5",
+      "recipe": "near-singular",
+      "seed": 19,
+      "source": "trac-ik-2015: reachable FK sampling / joint-limit stress; adapted models and error norms",
+      "reproduction": "literature-informed adaptation, not original paper dataset reproduction",
+      "urdf_sha256": "a8c45d481522f29bf266776d4dd2a14ee0348be01473d4c526628c4689eb38c9",
+      "q_initial": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "targets": {
+        "tool0": [
+          [
+            -0.9998397611948671,
+            -0.0035265409729275305,
+            -0.01755036872996558,
+            0.8195798990756422
+          ],
+          [
+            -0.01755435587829592,
+            0.0011028549080163233,
+            0.9998453021846679,
+            0.180986209312191
+          ],
+          [
+            -0.0035066399144519853,
+            0.999993173586609,
+            -0.0011645843431217888,
+            -0.046987165179588404
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "grasps": [],
+      "obstacles": [],
+      "collision_spheres": [],
+      "expected_feasible": true,
+      "feasibility_certificate": null,
+      "sha256": "b5a192c69c6d289d0f7c004a96913988207213b4a64aa84e4cdc806420d17fc7",
+      "id": "ur5/near-singular/19/b5a192c69c"
+    },
+    {
+      "schema_version": 1,
+      "scenario": "panda",
+      "recipe": "unreachable",
+      "seed": 7,
+      "source": "trac-ik-2015: reachable FK sampling / joint-limit stress; adapted models and error norms",
+      "reproduction": "literature-informed adaptation, not original paper dataset reproduction",
+      "urdf_sha256": "99ffc011012d3128138b00ed68c054e128e029c6d17a8992537d03e35238d2aa",
+      "q_initial": [
+        0.0,
+        0.0,
+        0.0,
+        -1.5708,
+        0.0,
+        1.8675,
+        0.0
+      ],
+      "targets": {
+        "a0_panda_link8": [
+          [
+            -0.05163832002280354,
+            -0.041723773657254784,
+            -0.9977938718077102,
+            2.319262332715346
+          ],
+          [
+            -0.5209211592183762,
+            -0.851309417619468,
+            0.06255734450075025,
+            0.0
+          ],
+          [
+            -0.852041448395444,
+            0.5230022965381707,
+            0.022225391604958285,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "grasps": [],
+      "obstacles": [],
+      "collision_spheres": [],
+      "expected_feasible": false,
+      "feasibility_certificate": {
+        "type": "translation-length upper bound",
+        "maximum_root_reach_m": 1.3192623327153459,
+        "target_root_distance_m": 2.319262332715346
+      },
+      "sha256": "7909454917d256bf49200373edf13e8556416ec2bbaf1e641ac1c7e16c70f823",
+      "id": "panda/unreachable/7/7909454917"
+    },
+    {
+      "schema_version": 1,
+      "scenario": "dual",
+      "recipe": "closed-loop",
+      "seed": 7,
+      "source": "pink / mink relative-frame and humanoid-contact examples; project synthetic object grasp extension",
+      "reproduction": "literature-informed adaptation, not original paper dataset reproduction",
+      "urdf_sha256": "71ab4b116e08364d87d1c6d1bb6f43c44250afc8e78c570fca6a9af3dc09bce1",
+      "q_initial": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.55,
+        -0.55,
+        0.0,
+        0.0,
+        -1.9,
+        -1.9,
+        0.0,
+        0.0,
+        1.45,
+        1.45,
+        0.7,
+        0.7
+      ],
+      "targets": {
+        "object": [
+          [
+            0.9986755034599292,
+            -0.04559499424403242,
+            -0.023839783743663405,
+            0.03750190933209334
+          ],
+          [
+            0.04497075701543293,
+            0.9986473938080652,
+            -0.026096242139798952,
+            0.025
+          ],
+          [
+            0.02499739591471234,
+            0.02498958463533917,
+            0.9993751301974837,
+            0.58
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "grasps": [
+        {
+          "a": "object",
+          "b": "a0_panda_link8",
+          "relative": [
+            [
+              0.7610211621284219,
+              -0.6409992821472793,
+              0.0998334166468282,
+              -0.3199836314262411
+            ],
+            [
+              -0.6442176872376911,
+              -0.7648421872844884,
+              -4.009881403426903e-16,
+              -1.8825642644592727e-16
+            ],
+            [
+              0.07635680875224399,
+              -0.06431445278125617,
+              -0.9950041652780258,
+              0.16243508520218275
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "a": "object",
+          "b": "a1_panda_link8",
+          "relative": [
+            [
+              -0.7610211621284217,
+              0.6409992821472794,
+              -0.0998334166468282,
+              0.3199836314262411
+            ],
+            [
+              0.6442176872376912,
+              0.7648421872844883,
+              4.132142077571385e-16,
+              1.4906973344535801e-16
+            ],
+            [
+              0.07635680875224399,
+              -0.06431445278125617,
+              -0.9950041652780258,
+              0.16243508520218275
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "obstacles": [],
+      "collision_spheres": [],
+      "expected_feasible": true,
+      "feasibility_certificate": null,
+      "sha256": "563aeee4fe2aeac2fc05b93a96674650917461ab3bae62df55f9c4bca88cd536",
+      "id": "dual/closed-loop/7/563aeee4fe"
+    },
+    {
+      "schema_version": 1,
+      "scenario": "dual",
+      "recipe": "closed-loop",
+      "seed": 11,
+      "source": "pink / mink relative-frame and humanoid-contact examples; project synthetic object grasp extension",
+      "reproduction": "literature-informed adaptation, not original paper dataset reproduction",
+      "urdf_sha256": "71ab4b116e08364d87d1c6d1bb6f43c44250afc8e78c570fca6a9af3dc09bce1",
+      "q_initial": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.55,
+        -0.55,
+        0.0,
+        0.0,
+        -1.9,
+        -1.9,
+        0.0,
+        0.0,
+        1.45,
+        1.45,
+        0.7,
+        0.7
+      ],
+      "targets": {
+        "object": [
+          [
+            0.9986755034599292,
+            -0.04559499424403242,
+            -0.023839783743663405,
+            0.027571404055383997
+          ],
+          [
+            0.04497075701543293,
+            0.9986473938080652,
+            -0.026096242139798952,
+            0.025
+          ],
+          [
+            0.02499739591471234,
+            0.02498958463533917,
+            0.9993751301974837,
+            0.58
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "grasps": [
+        {
+          "a": "object",
+          "b": "a0_panda_link8",
+          "relative": [
+            [
+              0.7610211621284219,
+              -0.6409992821472793,
+              0.0998334166468282,
+              -0.3199836314262411
+            ],
+            [
+              -0.6442176872376911,
+              -0.7648421872844884,
+              -4.009881403426903e-16,
+              -1.8825642644592727e-16
+            ],
+            [
+              0.07635680875224399,
+              -0.06431445278125617,
+              -0.9950041652780258,
+              0.16243508520218275
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "a": "object",
+          "b": "a1_panda_link8",
+          "relative": [
+            [
+              -0.7610211621284217,
+              0.6409992821472794,
+              -0.0998334166468282,
+              0.3199836314262411
+            ],
+            [
+              0.6442176872376912,
+              0.7648421872844883,
+              4.132142077571385e-16,
+              1.4906973344535801e-16
+            ],
+            [
+              0.07635680875224399,
+              -0.06431445278125617,
+              -0.9950041652780258,
+              0.16243508520218275
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "obstacles": [],
+      "collision_spheres": [],
+      "expected_feasible": true,
+      "feasibility_certificate": null,
+      "sha256": "473d9751c93fed116054f72c5e9da15ca6cc99311f29cedbed6770957c7e09a2",
+      "id": "dual/closed-loop/11/473d9751c9"
+    },
+    {
+      "schema_version": 1,
+      "scenario": "quad",
+      "recipe": "closed-loop",
+      "seed": 7,
+      "source": "pink / mink relative-frame and humanoid-contact examples; project synthetic object grasp extension",
+      "reproduction": "literature-informed adaptation, not original paper dataset reproduction",
+      "urdf_sha256": "a332daa34a8ce4c24717eca29bd29e4dd8cfdd3d6511e73300827fe31607dbb1",
+      "q_initial": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.55,
+        -0.55,
+        -0.55,
+        -0.55,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.9,
+        -1.9,
+        -1.9,
+        -1.9,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.45,
+        1.45,
+        1.45,
+        1.45,
+        0.7,
+        0.7,
+        0.7,
+        0.7
+      ],
+      "targets": {
+        "object": [
+          [
+            0.9986755034599292,
+            -0.04559499424403242,
+            -0.023839783743663405,
+            0.03750190933209334
+          ],
+          [
+            0.04497075701543293,
+            0.9986473938080652,
+            -0.026096242139798952,
+            0.025
+          ],
+          [
+            0.02499739591471234,
+            0.02498958463533917,
+            0.9993751301974837,
+            0.58
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "grasps": [
+        {
+          "a": "object",
+          "b": "a0_panda_link8",
+          "relative": [
+            [
+              0.7610211621284219,
+              -0.6409992821472793,
+              0.0998334166468282,
+              -0.3199836314262411
+            ],
+            [
+              -0.6442176872376911,
+              -0.7648421872844884,
+              -4.009881403426903e-16,
+              -1.8825642644592727e-16
+            ],
+            [
+              0.07635680875224399,
+              -0.06431445278125617,
+              -0.9950041652780258,
+              0.16243508520218275
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "a": "object",
+          "b": "a1_panda_link8",
+          "relative": [
+            [
+              0.6442176872376913,
+              0.7648421872844882,
+              4.231556119003513e-16,
+              2.26558127601422e-16
+            ],
+            [
+              0.7610211621284216,
+              -0.6409992821472794,
+              0.0998334166468282,
+              -0.3199836314262411
+            ],
+            [
+              0.07635680875224399,
+              -0.06431445278125617,
+              -0.9950041652780258,
+              0.16243508520218275
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "a": "object",
+          "b": "a2_panda_link8",
+          "relative": [
+            [
+              -0.7610211621284217,
+              0.6409992821472794,
+              -0.0998334166468282,
+              0.3199836314262411
+            ],
+            [
+              0.6442176872376912,
+              0.7648421872844883,
+              4.132142077571385e-16,
+              1.4906973344535801e-16
+            ],
+            [
+              0.07635680875224399,
+              -0.06431445278125617,
+              -0.9950041652780258,
+              0.16243508520218275
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "a": "object",
+          "b": "a3_panda_link8",
+          "relative": [
+            [
+              -0.6442176872376913,
+              -0.7648421872844882,
+              -4.231556119003513e-16,
+              -1.43282145259402e-16
+            ],
+            [
+              -0.7610211621284216,
+              0.6409992821472794,
+              -0.0998334166468282,
+              0.3199836314262411
+            ],
+            [
+              0.07635680875224399,
+              -0.06431445278125617,
+              -0.9950041652780258,
+              0.16243508520218275
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "obstacles": [],
+      "collision_spheres": [],
+      "expected_feasible": true,
+      "feasibility_certificate": null,
+      "sha256": "6bedb09b64fcf908207507caa289254ebcff31f47070c2cacd4e32ca75ee02ad",
+      "id": "quad/closed-loop/7/6bedb09b64"
+    },
+    {
+      "schema_version": 1,
+      "scenario": "unitree-g1",
+      "recipe": "closed-loop",
+      "seed": 7,
+      "source": "pink / mink relative-frame and humanoid-contact examples; project synthetic object grasp extension",
+      "reproduction": "literature-informed adaptation, not original paper dataset reproduction",
+      "urdf_sha256": "fb0cc02a6954d949a8351e42cdf352e0f6cfd354d8fe1a99ffa2b7141b88636e",
+      "q_initial": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "targets": {
+        "left_rubber_hand": [
+          [
+            0.9982057882051456,
+            -0.05889987925225142,
+            -0.010770729678814444,
+            0.247475445695764
+          ],
+          [
+            0.0578959855077119,
+            0.9953261451998626,
+            -0.07729113496172846,
+            0.17086511271584967
+          ],
+          [
+            0.015272827368719414,
+            0.07652887628635034,
+            0.9969503858460127,
+            0.10687369489063919
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "right_rubber_hand": [
+          [
+            0.9905241588323147,
+            -0.1361209520133074,
+            -0.018247662659272957,
+            0.25141364839540753
+          ],
+          [
+            0.13683348198470696,
+            0.9895163160382229,
+            0.04619587105017691,
+            -0.14873667612425387
+          ],
+          [
+            0.011768133984477954,
+            -0.04825501753325322,
+            0.9987657204296655,
+            0.09015056691033341
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "grasps": [
+        {
+          "a": "pelvis",
+          "b": "left_ankle_roll_link",
+          "relative": [
+            [
+              0.9999999999999999,
+              0.0,
+              0.0,
+              -2.3260967810037614e-06
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.118506455
+            ],
+            [
+              0.0,
+              0.0,
+              0.9999999999999999,
+              -0.7568637524222113
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "a": "pelvis",
+          "b": "right_ankle_roll_link",
+          "relative": [
+            [
+              0.9999999999999999,
+              0.0,
+              0.0,
+              -2.3260967810037614e-06
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              -0.118506455
+            ],
+            [
+              0.0,
+              0.0,
+              0.9999999999999999,
+              -0.7568637524222113
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "obstacles": [],
+      "collision_spheres": [],
+      "expected_feasible": true,
+      "feasibility_certificate": null,
+      "sha256": "6372f8108f030fcd0cb5040a685ad9e4773d60fcc807667dcb57f1e4967ca480",
+      "id": "unitree-g1/closed-loop/7/6372f8108f"
+    },
+    {
+      "schema_version": 1,
+      "scenario": "unitree-g1",
+      "recipe": "closed-loop",
+      "seed": 11,
+      "source": "pink / mink relative-frame and humanoid-contact examples; project synthetic object grasp extension",
+      "reproduction": "literature-informed adaptation, not original paper dataset reproduction",
+      "urdf_sha256": "fb0cc02a6954d949a8351e42cdf352e0f6cfd354d8fe1a99ffa2b7141b88636e",
+      "q_initial": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "targets": {
+        "left_rubber_hand": [
+          [
+            0.9946033806953168,
+            0.07868794370630308,
+            -0.06761895166830137,
+            0.26198685581368797
+          ],
+          [
+            -0.08255347067860871,
+            0.9949889087894587,
+            -0.056409182451776264,
+            0.1345673139030718
+          ],
+          [
+            0.06284138436064639,
+            0.06168694271266293,
+            0.9961152952898585,
+            0.10652332429672422
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "right_rubber_hand": [
+          [
+            0.9939532758149828,
+            -0.0474202257118166,
+            -0.0990363957851097,
+            0.24335914598929864
+          ],
+          [
+            0.051304082728652264,
+            0.9979958194965358,
+            0.0370436953179517,
+            -0.15626146382528985
+          ],
+          [
+            0.0970812885783668,
+            -0.04190067375207709,
+            0.9943940652211707,
+            0.11183323992748631
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "grasps": [
+        {
+          "a": "pelvis",
+          "b": "left_ankle_roll_link",
+          "relative": [
+            [
+              0.9999999999999999,
+              0.0,
+              0.0,
+              -2.3260967810037614e-06
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.118506455
+            ],
+            [
+              0.0,
+              0.0,
+              0.9999999999999999,
+              -0.7568637524222113
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "a": "pelvis",
+          "b": "right_ankle_roll_link",
+          "relative": [
+            [
+              0.9999999999999999,
+              0.0,
+              0.0,
+              -2.3260967810037614e-06
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              -0.118506455
+            ],
+            [
+              0.0,
+              0.0,
+              0.9999999999999999,
+              -0.7568637524222113
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "obstacles": [],
+      "collision_spheres": [],
+      "expected_feasible": true,
+      "feasibility_certificate": null,
+      "sha256": "974742cc919cbeaefed887df0b62a58e3a697c2df508f90e38addf7396e6b985",
+      "id": "unitree-g1/closed-loop/11/974742cc91"
+    },
+    {
+      "schema_version": 1,
+      "scenario": "ergocub",
+      "recipe": "closed-loop",
+      "seed": 7,
+      "source": "pink / mink relative-frame and humanoid-contact examples; project synthetic object grasp extension",
+      "reproduction": "literature-informed adaptation, not original paper dataset reproduction",
+      "urdf_sha256": "88855c5b556d9397f259d8a5f4026fb5b8b93b61b9ab960ca4053d66181dde4a",
+      "q_initial": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "targets": {
+        "l_hand_palm": [
+          [
+            0.9478360466429578,
+            0.2768632968885401,
+            -0.15796690640845373,
+            0.06602990727246347
+          ],
+          [
+            -0.3035880898170389,
+            0.9351418703683355,
+            -0.18260326942651667,
+            0.25593074614517336
+          ],
+          [
+            0.09716532511904943,
+            0.2210348323681579,
+            0.970413572903064,
+            0.0050401271500604234
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "r_hand_palm": [
+          [
+            0.9793297349595204,
+            -0.19753875043408198,
+            0.04349381911325779,
+            -9.35213125319569e-05
+          ],
+          [
+            0.19039286028384855,
+            0.9728591600429223,
+            0.1315127882508577,
+            -0.22837380760535783
+          ],
+          [
+            -0.06829223218675919,
+            -0.12051347143585849,
+            0.9903598710698189,
+            0.006041933926204415
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "grasps": [
+        {
+          "a": "root_link",
+          "b": "l_sole",
+          "relative": [
+            [
+              1.0,
+              -2.9770274847097684e-15,
+              1.5233980087746246e-14,
+              0.044029999999987995
+            ],
+            [
+              2.977027484709828e-15,
+              1.0,
+              -3.910903222117566e-15,
+              0.07440000000000378
+            ],
+            [
+              -1.5233980087746234e-14,
+              3.91090322211761e-15,
+              1.0,
+              -0.7792999999999993
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "a": "root_link",
+          "b": "r_sole",
+          "relative": [
+            [
+              0.9999999999999999,
+              -1.942890246386001e-15,
+              4.3668401937943224e-14,
+              0.04402999999997101
+            ],
+            [
+              1.9428902463935424e-15,
+              0.9999999999999999,
+              -6.434993555868006e-14,
+              -0.07439999999995833
+            ],
+            [
+              -4.36684019379431e-14,
+              6.434993555868014e-14,
+              1.0,
+              -0.7793000000000012
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "obstacles": [],
+      "collision_spheres": [],
+      "expected_feasible": true,
+      "feasibility_certificate": null,
+      "sha256": "db4ade46d8148cac37d4e5eca816423966d3104c76f9d3b417690cd057b32ba8",
+      "id": "ergocub/closed-loop/7/db4ade46d8"
+    },
+    {
+      "schema_version": 1,
+      "scenario": "panda",
+      "recipe": "clutter-boxes",
+      "seed": 7,
+      "source": "motionbenchmaker-2022 / curobo: primitive clutter and perturbed queries; synthetic proxy adaptation",
+      "reproduction": "literature-informed adaptation, not original paper dataset reproduction",
+      "urdf_sha256": "99ffc011012d3128138b00ed68c054e128e029c6d17a8992537d03e35238d2aa",
+      "q_initial": [
+        0.0,
+        -0.55,
+        0.0,
+        -1.9,
+        0.0,
+        1.45,
+        0.7
+      ],
+      "targets": {
+        "a0_panda_link8": [
+          [
+            0.9578280282923107,
+            -0.17697984083655122,
+            -0.2263705019545031,
+            0.4096277076526337
+          ],
+          [
+            -0.19085987559924367,
+            -0.9807692698955504,
+            -0.040793959292895345,
+            0.19664455128288022
+          ],
+          [
+            -0.21479752350505774,
+            0.08227864343812549,
+            -0.9731866463993821,
+            0.45735534222652974
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "grasps": [],
+      "obstacles": [
+        {
+          "type": "box",
+          "center": [
+            0.3848220381131963,
+            0.09832227564144001,
+            0.5848952137143563
+          ],
+          "half_extents": [
+            0.015,
+            0.025,
+            0.025
+          ]
+        },
+        {
+          "type": "box",
+          "center": [
+            0.3848220381131963,
+            -0.10167772435856,
+            0.5648952137143562
+          ],
+          "half_extents": [
+            0.1,
+            0.018,
+            0.1
+          ]
+        },
+        {
+          "type": "box",
+          "center": [
+            0.3848220381131963,
+            0.29832227564144004,
+            0.5648952137143562
+          ],
+          "half_extents": [
+            0.1,
+            0.018,
+            0.1
+          ]
+        }
+      ],
+      "collision_spheres": [
+        {
+          "link": "a0_panda_link1",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 0.025
+        },
+        {
+          "link": "a0_panda_link2",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 0.025
+        },
+        {
+          "link": "a0_panda_link3",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 0.025
+        },
+        {
+          "link": "a0_panda_link4",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 0.025
+        },
+        {
+          "link": "a0_panda_link5",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 0.025
+        },
+        {
+          "link": "a0_panda_link6",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 0.025
+        },
+        {
+          "link": "a0_panda_link7",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 0.025
+        },
+        {
+          "link": "a0_panda_link8",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 0.025
+        }
+      ],
+      "expected_feasible": true,
+      "feasibility_certificate": null,
+      "sha256": "c40ef069494931b228aca2ab3829f846f38da27993837fa7320b9d3df3622aef",
+      "id": "panda/clutter-boxes/7/c40ef06949"
+    },
+    {
+      "schema_version": 1,
+      "scenario": "panda",
+      "recipe": "clutter-boxes",
+      "seed": 11,
+      "source": "motionbenchmaker-2022 / curobo: primitive clutter and perturbed queries; synthetic proxy adaptation",
+      "reproduction": "literature-informed adaptation, not original paper dataset reproduction",
+      "urdf_sha256": "99ffc011012d3128138b00ed68c054e128e029c6d17a8992537d03e35238d2aa",
+      "q_initial": [
+        0.0,
+        -0.55,
+        0.0,
+        -1.9,
+        0.0,
+        1.45,
+        0.7
+      ],
+      "targets": {
+        "a0_panda_link8": [
+          [
+            0.9593662700956985,
+            -0.27723460804649164,
+            -0.052510302836446074,
+            0.39340147995691854
+          ],
+          [
+            -0.27498916878803487,
+            -0.9603386764737482,
+            0.046158244311443594,
+            0.1675083477007454
+          ],
+          [
+            -0.06322433749698561,
+            -0.02984289814943326,
+            -0.9975530485032412,
+            0.5414741342902846
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "grasps": [],
+      "obstacles": [
+        {
+          "type": "box",
+          "center": [
+            0.37670892426533875,
+            0.0837541738503726,
+            0.6269546097462337
+          ],
+          "half_extents": [
+            0.015,
+            0.025,
+            0.025
+          ]
+        },
+        {
+          "type": "box",
+          "center": [
+            0.37670892426533875,
+            -0.1162458261496274,
+            0.6069546097462337
+          ],
+          "half_extents": [
+            0.1,
+            0.018,
+            0.1
+          ]
+        },
+        {
+          "type": "box",
+          "center": [
+            0.37670892426533875,
+            0.2837541738503726,
+            0.6069546097462337
+          ],
+          "half_extents": [
+            0.1,
+            0.018,
+            0.1
+          ]
+        }
+      ],
+      "collision_spheres": [
+        {
+          "link": "a0_panda_link1",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 0.025
+        },
+        {
+          "link": "a0_panda_link2",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 0.025
+        },
+        {
+          "link": "a0_panda_link3",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 0.025
+        },
+        {
+          "link": "a0_panda_link4",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 0.025
+        },
+        {
+          "link": "a0_panda_link5",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 0.025
+        },
+        {
+          "link": "a0_panda_link6",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 0.025
+        },
+        {
+          "link": "a0_panda_link7",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 0.025
+        },
+        {
+          "link": "a0_panda_link8",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 0.025
+        }
+      ],
+      "expected_feasible": true,
+      "feasibility_certificate": null,
+      "sha256": "1f2de6864cc967c58c78f37816eb7ea16fd615c98c149f576eddd324cb32d381",
+      "id": "panda/clutter-boxes/11/1f2de6864c"
+    },
+    {
+      "schema_version": 1,
+      "scenario": "panda",
+      "recipe": "clutter-boxes",
+      "seed": 19,
+      "source": "motionbenchmaker-2022 / curobo: primitive clutter and perturbed queries; synthetic proxy adaptation",
+      "reproduction": "literature-informed adaptation, not original paper dataset reproduction",
+      "urdf_sha256": "99ffc011012d3128138b00ed68c054e128e029c6d17a8992537d03e35238d2aa",
+      "q_initial": [
+        0.0,
+        -0.55,
+        0.0,
+        -1.9,
+        0.0,
+        1.45,
+        0.7
+      ],
+      "targets": {
+        "a0_panda_link8": [
+          [
+            0.9473195937554344,
+            -0.3130034407072734,
+            -0.06792962087666089,
+            0.39192504747568285
+          ],
+          [
+            -0.30764526776724177,
+            -0.9482247486937736,
+            0.07889369547087915,
+            0.19384075570868065
+          ],
+          [
+            -0.0891065458171321,
+            -0.053839317139410675,
+            -0.9945659110498917,
+            0.5909755913279664
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "grasps": [],
+      "obstacles": [
+        {
+          "type": "box",
+          "center": [
+            0.3759707080247209,
+            0.09692037785434023,
+            0.6517053382650746
+          ],
+          "half_extents": [
+            0.015,
+            0.025,
+            0.025
+          ]
+        },
+        {
+          "type": "box",
+          "center": [
+            0.3759707080247209,
+            -0.10307962214565979,
+            0.6317053382650746
+          ],
+          "half_extents": [
+            0.1,
+            0.018,
+            0.1
+          ]
+        },
+        {
+          "type": "box",
+          "center": [
+            0.3759707080247209,
+            0.2969203778543402,
+            0.6317053382650746
+          ],
+          "half_extents": [
+            0.1,
+            0.018,
+            0.1
+          ]
+        }
+      ],
+      "collision_spheres": [
+        {
+          "link": "a0_panda_link1",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 0.025
+        },
+        {
+          "link": "a0_panda_link2",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 0.025
+        },
+        {
+          "link": "a0_panda_link3",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 0.025
+        },
+        {
+          "link": "a0_panda_link4",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 0.025
+        },
+        {
+          "link": "a0_panda_link5",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 0.025
+        },
+        {
+          "link": "a0_panda_link6",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 0.025
+        },
+        {
+          "link": "a0_panda_link7",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 0.025
+        },
+        {
+          "link": "a0_panda_link8",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "radius": 0.025
+        }
+      ],
+      "expected_feasible": true,
+      "feasibility_certificate": null,
+      "sha256": "cb43a3b9cf6164ceb8f8836aed6dbed12fbe8d8e67ec21bd98222c944dc45b3f",
+      "id": "panda/clutter-boxes/19/cb43a3b9cf"
+    }
+  ]
+}

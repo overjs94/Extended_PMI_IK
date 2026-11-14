@@ -7,8 +7,12 @@ import numpy as np
 
 
 class ConsensusSolver:
-    def __init__(self,kind,tolerance=2e-7,max_iterations=3000):
+    def __init__(self,kind,tolerance=2e-7,max_iterations=3000,backend='numpy',workers=1):
         self.kind,self.tol,self.maxiter = kind,tolerance,max_iterations
+        if backend not in ('numpy','numba'):raise ValueError('Unknown CPU kernel backend')
+        if workers<1:raise ValueError('workers must be positive')
+        if backend=='numpy' and workers!=1:raise ValueError('NumPy reference does not launch separate workers')
+        self.backend,self.workers=backend,workers
         self.state = None
 
     def solve(self,D,b,J,e,Jh,lower):
@@ -42,6 +46,27 @@ class ConsensusSolver:
             value = A@v.ravel()
             return max(float(np.max(lo-value,initial=0)),float(np.max(value-hi,initial=0)))
         scale = max(float(np.mean(np.diag(D))),1.)
+        if self.backend=='numba':
+            from . import parallel_kernels
+            import numba
+            pointers,copies=parallel_kernels.inverse_incidence(indices,mask,n)
+            previous=numba.get_num_threads()
+            try:
+                numba.set_num_threads(self.workers)
+                if self.kind=='admm':
+                    if not np.allclose(D,D.T):raise ValueError('QP ADMM requires a symmetric operator; use DRS for Skew-PMI')
+                    inv=np.linalg.inv(blocks+scale*degree[:,:,None]*np.eye(6))
+                    z,u=self.state if self.state is not None else (np.zeros_like(factors),np.zeros_like(factors))
+                    v,iterations,residual,z,u=parallel_kernels.admm(inv,body_b,factors,indices,mask,norm2,lo,hi,pointers,copies,scale,z,u,self.tol,self.maxiter)
+                    self.state=(z,u)
+                else:
+                    gamma=1/scale;inv=np.linalg.inv(np.eye(6)+gamma*blocks)
+                    zb,zf=self.state if self.state is not None else (np.zeros((nb,6)),np.zeros_like(factors))
+                    v,iterations,residual,zb,zf=parallel_kernels.drs(inv,body_b,factors,indices,mask,norm2,lo,hi,pointers,copies,gamma,zb,zf,self.tol,self.maxiter)
+                    self.state=(zb,zf)
+            finally:numba.set_num_threads(previous)
+            if residual>1e-5:raise RuntimeError(f'{self.kind.upper()} compiled inner limit: residual={residual:.3g}, iterations={iterations}')
+            return v,iterations,residual
         if self.kind == 'admm':
             if not np.allclose(D,D.T): raise ValueError('QP ADMM requires a symmetric operator; use DRS for Skew-PMI')
             rho = scale

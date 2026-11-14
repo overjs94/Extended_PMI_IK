@@ -1,0 +1,69 @@
+{
+  "name": "cuRoboV2 upstream IK reference protocol",
+  "source_commit": "8991ec140f1f03cca2725118575c857aa3aef70e",
+  "sources": [
+    {
+      "url": "https://github.com/NVlabs/curobo/blob/8991ec140f1f03cca2725118575c857aa3aef70e/docs/reference/benchmarks.rst",
+      "sha256": "036b85ac046e17b3ef246528cd7837877e7ce75a4af619db43b930c809d74a24"
+    },
+    {
+      "url": "https://github.com/NVlabs/curobo/blob/8991ec140f1f03cca2725118575c857aa3aef70e/benchmark/ik_benchmark.py",
+      "sha256": "d2dc836edd660ba7fcbc9226c27b9c745f019be2cc152157f9b4fb7f0685f294"
+    },
+    {
+      "url": "https://github.com/NVlabs/curobo/blob/8991ec140f1f03cca2725118575c857aa3aef70e/curobo/content/configs/robot/unitree_g1_29dof.yml",
+      "sha256": "28b1078ef779e372f678b4c49017fdfeff0bc35419b4b42b6ac5c8c42598d12e"
+    },
+    {
+      "url": "https://github.com/NVlabs/curobo/blob/8991ec140f1f03cca2725118575c857aa3aef70e/curobo/content/configs/scene/collision_table.yml",
+      "sha256": "a6e2669504ae7624fc8ae5fa58cb7021c26f7d7681796153382f5edcd45e157b"
+    }
+  ],
+  "source_type": "official recorded benchmark documentation and code, not current-environment measurements",
+  "batch_sizes": [
+    100
+  ],
+  "batches": 5,
+  "position_tolerance_m": 0.005,
+  "rotation_tolerance_rad": 0.05,
+  "robots": {
+    "g1": {
+      "optimization_variables": 35,
+      "target_frames": "four wrists/ankles"
+    },
+    "dual_ur10e": {
+      "target_frames": 2
+    },
+    "franka": {
+      "target_frames": 1
+    }
+  },
+  "collision_scene": "collision_table.yml; self collision enabled in collision-free mode",
+  "warmup": "construct once, warm up graph compilation/capture, synchronize timing; separate cold-start costs",
+  "historical_hardware": "NVIDIA RTX 5090, CUDA 13.0, driver 595.99.02; recorded 2026-10-30/31",
+  "historical_results": [
+    {
+      "robot": "g1",
+      "pose_batch_ms": 19.201,
+      "pose_success_percent": 100,
+      "collision_batch_ms": 162.564,
+      "collision_success_percent": 90.2
+    },
+    {
+      "robot": "dual_ur10e",
+      "pose_batch_ms": 3.574,
+      "pose_success_percent": 100,
+      "collision_batch_ms": 8.434,
+      "collision_success_percent": 99.4
+    },
+    {
+      "robot": "franka",
+      "pose_batch_ms": 0.551,
+      "pose_success_percent": 100,
+      "collision_batch_ms": 0.559,
+      "collision_success_percent": 100
+    }
+  ],
+  "comparability_warning": "Times are entire 100-query GPU batches. Do not treat divided per-query throughput as single-query latency or compare directly with this CPU pilot: tolerance, model, self collision, batching and hardware differ.",
+  "current_environment_status": "not_run: no CUDA device/driver; exact cuRobo adapter and original input dataset not qualified"
+}

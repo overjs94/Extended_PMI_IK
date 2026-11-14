@@ -43,12 +43,26 @@ class Settings:
     damping: float = 4.
     mass: float = .1
     preview: bool = True
+    wall_time_limit_s: float | None = None
+    record_frames: bool = True
+    strict_closure_check: bool = False
+    splitting_backend: str = 'numpy'
+    cpu_workers: int = 1
 
 
 def errors(poses,targets):
     p = max(np.linalg.norm(poses[n][:3,3]-T[:3,3]) for n,T in targets.items())
     r = max(np.linalg.norm(Rotation.from_matrix(T[:3,:3].T@poses[n][:3,:3]).as_rotvec()) for n,T in targets.items())
     return float(p),float(r)
+
+
+def closure_errors(poses,grasps):
+    position=rotation=0.
+    for a,b,relative in grasps:
+        expected=poses[a]@relative;actual=poses[b]
+        position=max(position,float(np.linalg.norm(expected[:3,3]-actual[:3,3])))
+        rotation=max(rotation,float(np.linalg.norm(Rotation.from_matrix(expected[:3,:3].T@actual[:3,:3]).as_rotvec())))
+    return position,rotation
 
 
 def body_task(model,X,targets):
@@ -110,6 +124,8 @@ def vi_step(D,b,J,e,Jh,lower,schur=False):
 def solve_ik(model,q0,targets,grasps=(),method='maximal-skew',settings=None):
     if method not in METHODS: raise ValueError('Unknown method')
     cfg = settings or Settings()
+    if cfg.splitting_backend!='numpy' and method not in ('maximal-admm','maximal-drs','maximal-qp-drs'):
+        raise ValueError('Compiled body/factor CPU kernels apply to ADMM and DRS methods')
     if not targets: raise ValueError('At least one target is required')
     q = model.validate_q(q0).copy()
     if np.any(q<model.lower) or np.any(q>model.upper): raise ValueError('Initial q violates joint limits')
@@ -145,7 +161,7 @@ def solve_ik(model,q0,targets,grasps=(),method='maximal-skew',settings=None):
         backend = QPBackend('qpoases' if method.endswith('qpoases') else 'osqp',nv,len(g)+len(h))
     setup_ms = (perf_counter()-setup_started)*1000
     history,frames = [],[]
-    splitting = ConsensusSolver('admm' if method=='maximal-admm' else 'drs') if method in ('maximal-admm','maximal-drs','maximal-qp-drs') else None
+    splitting = ConsensusSolver('admm' if method=='maximal-admm' else 'drs',backend=cfg.splitting_backend,workers=cfg.cpu_workers) if method in ('maximal-admm','maximal-drs','maximal-qp-drs') else None
     guide = PreviewGuide(model.obstacles,model.collision_spheres[0]['radius']) if cfg.preview and model.obstacles else None
     inner_total = 0; status = 'iteration_limit'; failure = None
     start = perf_counter()
@@ -164,10 +180,13 @@ def solve_ik(model,q0,targets,grasps=(),method='maximal-skew',settings=None):
         history.append(dict(iteration=iteration,elapsed_ms=(perf_counter()-start)*1000,position_error_m=pos,rotation_error_rad=rot,
                             joint_residual=joint_res,grasp_residual=grasp_res,joint_limit_violation=violation,min_clearance_m=clearance,
                             preview_active=guide is not None and guide.waypoint is not None,energy=kinetic+cfg.stiffness*potential))
-        frames.append({n:T.tolist() for n,T in poses.items()})
-        if pos<=cfg.position_tolerance and rot<=cfg.rotation_tolerance and max(joint_res,grasp_res,violation)<=cfg.constraint_tolerance and (clearance is None or clearance>=-cfg.constraint_tolerance):
+        if cfg.record_frames:frames.append({n:T.tolist() for n,T in poses.items()})
+        closure_ok=not cfg.strict_closure_check or max(closure_errors(poses,grasps))<=cfg.constraint_tolerance
+        if pos<=cfg.position_tolerance and rot<=cfg.rotation_tolerance and max(joint_res,grasp_res,violation)<=cfg.constraint_tolerance and closure_ok and (clearance is None or clearance>=-cfg.constraint_tolerance):
             status = 'converged'; break
         if iteration == cfg.iterations: break
+        if cfg.wall_time_limit_s is not None and perf_counter()-start>=cfg.wall_time_limit_s:
+            status='timeout';break
         try:
             if reduced:
                 gradient = np.zeros(nv); taskH = np.zeros((nv,nv))
@@ -213,4 +232,6 @@ def solve_ik(model,q0,targets,grasps=(),method='maximal-skew',settings=None):
                          'actuated_dof':sum(j.kind in ('revolute','continuous','prismatic') for j in model.joints),'configuration_dof':model.dof,'bodies':len(model.bodies),'variables':nv,
                          'trajectory_min_clearance_m':min((v['min_clearance_m'] for v in history if v['min_clearance_m'] is not None),default=None)},
                 history=history,frames=frames,final_q=(q if reduced else model.coordinates(X)).tolist(),qnames=model.qnames,targets={k:v.tolist() for k,v in targets.items()},settings=asdict(cfg),
-                provenance={'implementation':'URDF-driven research reference; not original ROS executable','timing':'perf_counter; CPU solve, FK, constraints and frame capture; excludes model/constraint generation and HTTP','parallel':False,'platform':platform.platform(),'python':platform.python_version(),'collision_checking':'declared sphere proxies only' if model.obstacles else False,'guidance':'receding geometric waypoint preview; not full trajectory MPC' if guide else None})
+                provenance={'implementation':'URDF-driven research reference; not original ROS executable','timing':'perf_counter; CPU solve, FK, constraints and optional frame capture; excludes model/constraint generation and HTTP',
+                            'parallel':splitting is not None and cfg.splitting_backend=='numba' and cfg.cpu_workers>1,'cpu_workers':cfg.cpu_workers if splitting else 1,'cpu_kernel':cfg.splitting_backend if splitting else 'reference',
+                            'platform':platform.platform(),'python':platform.python_version(),'collision_checking':'declared sphere/box proxies only' if model.obstacles else False,'guidance':'receding geometric waypoint preview; not full trajectory MPC' if guide else None})

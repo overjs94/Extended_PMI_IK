@@ -30,3 +30,5 @@ starlette==1.10.0
 typing-inspection==0.4.5
 typing_extensions==4.16.0
 uvicorn==0.52.1
+llvmlite==0.46.0
+numba==0.63.1

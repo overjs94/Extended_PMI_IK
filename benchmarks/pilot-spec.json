@@ -1,0 +1,88 @@
+{
+  "name": "literature-informed matched-input pilot",
+  "scope": "Small deterministic distinct-seed pilot, not original paper reproduction or a publication-size benchmark",
+  "cases": [
+    {
+      "scenario": "panda",
+      "recipe": "nearby",
+      "seeds": [
+        7,
+        11,
+        19
+      ]
+    },
+    {
+      "scenario": "panda",
+      "recipe": "reachable-random",
+      "seeds": [
+        7,
+        11,
+        19
+      ]
+    },
+    {
+      "scenario": "kuka-iiwa7",
+      "recipe": "joint-limits",
+      "seeds": [
+        7,
+        11,
+        19
+      ]
+    },
+    {
+      "scenario": "ur5",
+      "recipe": "near-singular",
+      "seeds": [
+        7,
+        11,
+        19
+      ]
+    },
+    {
+      "scenario": "panda",
+      "recipe": "unreachable",
+      "seeds": [
+        7
+      ]
+    },
+    {
+      "scenario": "dual",
+      "recipe": "closed-loop",
+      "seeds": [
+        7,
+        11
+      ]
+    },
+    {
+      "scenario": "quad",
+      "recipe": "closed-loop",
+      "seeds": [
+        7
+      ]
+    },
+    {
+      "scenario": "unitree-g1",
+      "recipe": "closed-loop",
+      "seeds": [
+        7,
+        11
+      ]
+    },
+    {
+      "scenario": "ergocub",
+      "recipe": "closed-loop",
+      "seeds": [
+        7
+      ]
+    },
+    {
+      "scenario": "panda",
+      "recipe": "clutter-boxes",
+      "seeds": [
+        7,
+        11,
+        19
+      ]
+    }
+  ]
+}
