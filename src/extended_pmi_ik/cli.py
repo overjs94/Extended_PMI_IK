@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 from .scenarios import CATALOG,make_scenario
 from .kinematics import RobotModel
-from .solver import METHODS,solve_ik
+from .solver import METHODS,Settings,solve_ik
 
 
 def main():
@@ -14,10 +14,27 @@ def main():
     bench = sub.add_parser('benchmark'); bench.add_argument('--scenario',choices=[x['id'] for x in CATALOG],default='dual')
     bench.add_argument('--seeds',type=int,nargs='+',default=[7,11,19]); bench.add_argument('--methods',choices=list(METHODS),nargs='+',default=list(METHODS))
     bench.add_argument('--output',default='results/benchmark.json')
+    track=sub.add_parser('track');track.add_argument('--trajectory',default='dual-carry')
+    track.add_argument('--plan',help='Contact/EE plan JSON exported from CITO or another planner')
+    track.add_argument('--method',default='maximal-schur');track.add_argument('--iterations',type=int,default=600)
+    track.add_argument('--kernel',choices=['numpy','numba'],default='numpy');track.add_argument('--workers',type=int,choices=[1,2,4],default=1)
+    track.add_argument('--budget',type=float,default=2.);track.add_argument('--output',default='results/tracking.json')
     args = parser.parse_args()
     if args.command == 'generate':
         RobotModel.from_file(args.urdf).export(args.output)
         print(f'Generated C functions, header and manifest in {args.output}')
+        return
+    if args.command=='track':
+        from .trajectories import make_trajectory,solve_trajectory
+        m,q,plan,g=make_trajectory(args.trajectory)
+        if args.plan:plan=json.loads(Path(args.plan).read_text())
+        result=solve_trajectory(m,q,plan,g,args.method,Settings(iterations=args.iterations,wall_time_limit_s=args.budget,splitting_backend=args.kernel,cpu_workers=args.workers))
+        path=Path(args.output);path.parent.mkdir(parents=True,exist_ok=True)
+        path.write_text(json.dumps(result,allow_nan=False,indent=2)+'\n')
+        with path.with_suffix('.csv').open('w') as f:
+            fields=[k for k in result['tracking']['knots'][0] if k not in ('q','contacts')]
+            writer=csv.DictWriter(f,fieldnames=fields,extrasaction='ignore');writer.writeheader();writer.writerows(result['tracking']['knots'])
+        print(result['status'],result['tracking']['successes'],'/',result['tracking']['samples'],'knots',flush=True)
         return
     rows = []
     for seed in args.seeds:

@@ -1,0 +1,3 @@
+The tracking measurement source archive reproduces the exact Python source bytes used for the saved trajectory and LASDRA recordings.
+
+Source hash (sorted relative path + file bytes, SHA256): `eac941f9eaa6156566b455788dc21695c252a9cf60182cb63320f99b076a54de`. The reported git_commit is the parent checkout commit; these files were uncommitted during measurement. The archive removes that ambiguity. The final LASDRA loader reads the identical transcribed URDF from models/lasdra.urdf rather than regenerating the XML at runtime. Timings were not rewritten for that packaging change. Package versions, input plans, URDF XML and actual timing results remain in the recordings.

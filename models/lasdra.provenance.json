@@ -1,0 +1,24 @@
+{
+  "model": "LASDRA/EAMM 21 DoF",
+  "source": "Author-supplied PMI-IK (2).zip",
+  "source_files": {
+    "include/System_Param.h": "020f485503b8b88f6b1b776ced33289eeb94f9024e9201ca1d407b506cbfcb94",
+    "include/LASDRA_kinematics/LASDRA_kinematics.h": "d139b762ebda5340305678e8d4189b615fdda966462639d8de4e842b504ebd8f",
+    "include/LASDRA_kinematics/LASDRA_kinematics.cpp": "2517e81dd4f64bab17056e3b38596863fcc47bf3edcb6151cfd8d93dd21ea301"
+  },
+  "n_link": 10,
+  "link_length_m": 1.0,
+  "base_axes": [
+    "z",
+    "y",
+    "x"
+  ],
+  "remaining_joint_pairs": 9,
+  "pair_axes": [
+    "y",
+    "x"
+  ],
+  "joint_bounds": "Not supplied; URDF uses continuous joints",
+  "visual_geometry": "Schematic rods and joint spheres; no vendor CAD available",
+  "validation": "Original unmodified C++ EE and ten link-centre FK at 13 configurations, tolerance 2e-12"
+}

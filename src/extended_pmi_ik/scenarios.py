@@ -15,6 +15,7 @@ CATALOG = [
     dict(id='octo', name='Eight-arm / scaling study', arms=8, description='56 actuated DoF + 6 object DoF · synthetic scaling assembly'),
     dict(id='humanoid', name='Humanoid / whole-body carry', arms=2, description='32 actuated DoF + 6 object DoF · synthetic humanoid, fixed feet and rigid grasps'),
     dict(id='obstacle', name='Panda / obstacle detour', arms=1, description='7 DoF · end-effector sphere avoidance + receding geometric preview'),
+    dict(id='lasdra', name='LASDRA / EAMM 21 DoF', arms=0, description='Author-supplied LASDRA kinematics · ten 1 m links · schematic display geometry'),
 ]
 REGISTRY = json.loads((ROOT/'models/registry.json').read_text())
 for entry in REGISTRY:
@@ -103,6 +104,9 @@ def assembly(arms):
 
 
 def make_scenario(scenario='dual', seed=7):
+    if scenario=='lasdra':
+        from .lasdra import lasdra_scenario
+        return lasdra_scenario(seed)
     external = next((e for e in REGISTRY if e['id']==scenario),None)
     if external:return external_scenario(external,seed)
     item = next((x for x in CATALOG if x['id']==scenario),None)

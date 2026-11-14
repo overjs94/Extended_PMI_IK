@@ -15,7 +15,7 @@ export function createScene(container){
   const grid=new THREE.GridHelper(8,40,0x53606a,0x283743);grid.rotation.x=Math.PI/2;grid.position.z=-.015;scene.add(grid);
   const axes=new THREE.AxesHelper(.22);axes.position.set(-1.2,-1.1,.002);scene.add(axes);
   let robot=new THREE.Group(),decorations=new THREE.Group(),trail=new THREE.Group();scene.add(robot,decorations,trail);
-  let frames={},skeleton,model,graspLines=[],loadVersion=0;
+  let frames={},skeleton,model,graspLines=[],loadVersion=0,targetFrames={};
   const cache=new Map(),loader=new STLLoader(),collada=new ColladaLoader(),objLoader=new OBJLoader();
   const palette=[0xbacbd0,0x77cdbb,0x8eafc9,0xe5bd87,0xb59dc9,0x98b587,0xbf8e88,0x86bfc7];
   const matrix=T=>new THREE.Matrix4().set(...T.flat());
@@ -27,6 +27,7 @@ export function createScene(container){
   async function load(data,mode='collision'){
     const bounds=new THREE.Box3().setFromPoints(Object.values(data.initial).map(T=>new THREE.Vector3(...T.slice(0,3).map(r=>r[3]))));
     homeTarget=bounds.getCenter(new THREE.Vector3());const size=bounds.getSize(new THREE.Vector3());homeDistance=Math.max(size.x,size.y,size.z,.5)*2.7;
+    controls.maxDistance=Math.max(12,homeDistance*2);grid.scale.setScalar(Math.max(1,Math.max(size.x,size.y)/4));grid.position.x=homeTarget.x;grid.position.z=Math.min(...Object.values(data.initial).map(T=>T[2][3]))-.015;
     const version=++loadVersion;model=data;dispose(robot);dispose(decorations);dispose(trail);robot=new THREE.Group();decorations=new THREE.Group();trail=new THREE.Group();scene.add(robot,decorations,trail);frames={};graspLines=[];
     for(const link of data.links){const group=new THREE.Group();group.matrixAutoUpdate=false;robot.add(group);frames[link]=group;}
     const points=[];for(const j of data.joints){if(!j.child.endsWith('_sc'))points.push(new THREE.Vector3(),new THREE.Vector3());}
@@ -77,7 +78,7 @@ export function createScene(container){
       frames[v.link]?.add(mesh);
     });
     for(const obstacle of data.obstacles??[]){const mesh=new THREE.Mesh((obstacle.type==='box'?new THREE.BoxGeometry(...obstacle.half_extents.map(x=>x*2)):new THREE.SphereGeometry(obstacle.radius,32,24)),new THREE.MeshStandardMaterial({color:0xd97970,transparent:true,opacity:.55,roughness:.7}));mesh.position.fromArray(obstacle.center);decorations.add(mesh);const wire=new THREE.Mesh(mesh.geometry.clone(),new THREE.MeshBasicMaterial({color:0xec9e8e,wireframe:true,transparent:true,opacity:.1}));wire.position.copy(mesh.position);decorations.add(wire);}
-    for(const [name,T] of Object.entries(data.targets??{})){const group=new THREE.Group();group.matrixAutoUpdate=false;group.matrix.copy(matrix(T));group.add(new THREE.AxesHelper(.14));const sphere=new THREE.Mesh(new THREE.SphereGeometry(.017,16,12),new THREE.MeshBasicMaterial({color:0xf1c37e}));group.add(sphere);decorations.add(group);}
+    targetFrames={};reference(data.targets??{},{});
     for(const grasp of data.grasps??[]){if(grasp.a==='world')continue;const line=new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(),new THREE.Vector3()]),new THREE.LineDashedMaterial({color:0xe0ba7c,dashSize:.025,gapSize:.018,transparent:true,opacity:.5}));decorations.add(line);graspLines.push([line,grasp.a,grasp.b]);}
     update(data.initial);reset();await Promise.all(pending);
   }
@@ -89,8 +90,15 @@ export function createScene(container){
     skeleton.geometry.attributes.position.needsUpdate=true;skeleton.geometry.computeBoundingSphere();
     for(const [line,one,two] of graspLines){if(!poses[one]||!poses[two])continue;const a=line.geometry.attributes.position.array;a.set(poses[one].slice(0,3).map(r=>r[3]),0);a.set(poses[two].slice(0,3).map(r=>r[3]),3);line.geometry.attributes.position.needsUpdate=true;line.geometry.computeBoundingSphere();line.computeLineDistances();}
   }
-  function trajectory(result){dispose(trail);trail=new THREE.Group();scene.add(trail);for(const n of Object.keys(result.targets)){const points=result.frames.map(f=>new THREE.Vector3(...f[n].slice(0,3).map(r=>r[3])));const line=new THREE.Line(new THREE.BufferGeometry().setFromPoints(points),new THREE.LineBasicMaterial({color:0x8dcebc,transparent:true,opacity:.55}));trail.add(line);}}
+  function reference(targets,contacts={}){
+    for(const group of Object.values(targetFrames))group.visible=false;
+    for(const [name,T] of Object.entries(targets)){
+      if(!targetFrames[name]){const group=new THREE.Group();group.matrixAutoUpdate=false;group.add(new THREE.AxesHelper(.14));const sphere=new THREE.Mesh(new THREE.SphereGeometry(.017,16,12),new THREE.MeshBasicMaterial({color:0xf1c37e}));group.add(sphere);const ring=new THREE.Mesh(new THREE.TorusGeometry(.055,.006,8,24),new THREE.MeshBasicMaterial({color:0x76cfbf}));group.add(ring);targetFrames[name]=group;decorations.add(group);}
+      const group=targetFrames[name];group.visible=true;group.matrix.copy(matrix(T));group.children.at(-1).visible=name in contacts;
+    }
+  }
+  function trajectory(result){dispose(trail);trail=new THREE.Group();scene.add(trail);for(const n of Object.keys(result.targets)){const points=result.frames.filter(f=>f[n]).map(f=>new THREE.Vector3(...f[n].slice(0,3).map(r=>r[3])));const line=new THREE.Line(new THREE.BufferGeometry().setFromPoints(points),new THREE.LineBasicMaterial({color:0x8dcebc,transparent:true,opacity:.7}));trail.add(line);if(result.frame_targets){const desired=result.frame_targets.filter(f=>f[n]).map(f=>new THREE.Vector3(...f[n].slice(0,3).map(r=>r[3])));trail.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(desired),new THREE.LineBasicMaterial({color:0xf1c37e,transparent:true,opacity:.8})));}}}
   let paused=false,lastFrame=0;
   renderer.setAnimationLoop(time=>{if(paused||time-lastFrame<40)return;lastFrame=time;controls.update();renderer.render(scene,camera);});
-  return{load,update,reset,trajectory,pause:value=>{paused=value;}};
+  return{load,update,reset,trajectory,reference,pause:value=>{paused=value;}};
 }

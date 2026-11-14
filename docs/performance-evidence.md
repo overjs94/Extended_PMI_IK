@@ -2,7 +2,9 @@
 
 ## Homepage status
 
-The recorded-viewer deployment target is https://overjs94.github.io/Extended_PMI_IK/. Its first remote build and data validation passed, but GitHub refused initial Pages site creation; one-time [Pages settings](https://github.com/overjs94/Extended_PMI_IK/settings/pages) enablement is pending. Public availability is not yet verified. See [deployment instructions](deployment.md).
+The public recorded viewer is [https://overjs94.github.io/Extended_PMI_IK/](https://overjs94.github.io/Extended_PMI_IK/). GitHub Pages deployment and its external public-response checks passed. It replays saved measurements; the local Python API performs new optimization. See [deployment instructions](deployment.md).
+
+The additional [trajectory pilot](trajectory-input.md) retains every failed knot: common-default PMI Schur succeeds at 9/17 LASDRA, 17/17 dual-arm, 1/17 four-arm and 2/9 G1 walking knots; native Pink/Mink pass all of these short authored inputs. This does not demonstrate PMI superiority or an executed external CITO planner.
 
 ## Current native and CPU parallel measurements
 

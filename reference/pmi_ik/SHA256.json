@@ -7,5 +7,8 @@
   "qp_solver/src/qp_solvers/qp_solvers.hpp": "ae4acd2ade38d2cc213e72798253ab16ae168172e6670f855c09d5658361818b",
   "qp_solver/src/qp_solvers/qp_solver_qpoases.cpp": "47d96783d58fe41dc97f7e141a8d304942971b56a33b93ee1d4aed08ee158fbc",
   "CMakeLists.txt": "010cf7a22038b367345f99107bbd72cf0085c2c10656831c753887a251b6c0b9",
-  "package.xml": "1f3041214631c07057ea94c90e579fcd9b6a9a45bc125a84f98f7ea8fb443f73"
+  "package.xml": "1f3041214631c07057ea94c90e579fcd9b6a9a45bc125a84f98f7ea8fb443f73",
+  "include/System_Param.h": "020f485503b8b88f6b1b776ced33289eeb94f9024e9201ca1d407b506cbfcb94",
+  "include/LASDRA_kinematics/LASDRA_kinematics.h": "d139b762ebda5340305678e8d4189b615fdda966462639d8de4e842b504ebd8f",
+  "include/LASDRA_kinematics/LASDRA_kinematics.cpp": "2517e81dd4f64bab17056e3b38596863fcc47bf3edcb6151cfd8d93dd21ea301"
 }

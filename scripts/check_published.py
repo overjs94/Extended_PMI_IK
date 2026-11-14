@@ -23,6 +23,9 @@ for attempt in range(20):
         record=json.loads(gzip.decompress(get('data/runs/dual/maximal-schur.json.gz')))
         assert record['frames'] and record['recording']['seed']==7
         assert len(get('models/franka_description/meshes/visual/link0.dae'))>1000
+        tracking=json.loads(gzip.decompress(get('data/tracking/runs/g1-contact-walk/pink-osqp.json.gz')))
+        assert tracking['tracking']['samples']==9 and len(tracking['frames'])==9
+        assert 'lasdra' in {s['id'] for s in catalog['scenarios']}
         print('Verified public homepage:',base,'with measured records, benchmark evidence and realistic robot meshes')
         break
     except Exception as error:

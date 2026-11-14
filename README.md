@@ -6,11 +6,11 @@ URDF → symbolic FK/Jacobian → constrained midpoint IK → measured benchmark
 
 ## 홈페이지와 성능
 
-GitHub Pages 기록 뷰어의 배포 대상 주소: **https://overjs94.github.io/Extended_PMI_IK/**
+공개 홈페이지: **[Extended PMI-IK](https://overjs94.github.io/Extended_PMI_IK/)** · **[궤적·접촉 시나리오](https://overjs94.github.io/Extended_PMI_IK/#tracking)**
 
-첫 배포는 GitHub의 최초 사이트 생성 권한 제한으로 중단됐으며, 저장소 소유자가 Pages 소스를 GitHub Actions로 변경했습니다. 다음 배포와 공개 접속 검증이 완료될 때까지 위 주소는 배포 대상 주소입니다.
+이전 Contact_contraction과 같은 GitHub Pages 방식으로 게시했으며, 외부 GitHub 실행 환경의 공개 URL·계산 기록·실제 메시 접속 검증을 통과했습니다. 22개 embodiment/scenario의 66개 pose 기록과 LASDRA·2팔·4팔·G1 보행의 12개 궤적 기록을 제공합니다. Collision/visual mesh와 시점별 오차·계산 시간·접촉 오차를 확인할 수 있습니다. **Pages는 기록을 재생하며 Python IK를 새로 계산하지 않습니다.** 새 URDF/파라미터/계획 입력은 아래 Python API 또는 별도 연산 서버가 필요합니다.
 
-이전 Contact_contraction과 같은 정적 게시 방식입니다. 21개 embodiment/scenario와 63개 실제 계산 기록, collision/visual mesh, benchmark를 재생합니다. 공개 페이지는 Python IK를 새로 계산하지 않으며, 변경된 URDF/파라미터의 실시간 계산에는 아래 로컬 API 또는 별도 서버가 필요합니다. `.github/workflows/pages.yml`은 게시 후 실제 URL과 데이터·메시 접근을 검증합니다.
+LASDRA는 첨부 C++의 21 DoF/10개 1 m 링크를 URDF로 옮겼으며 원본 C++ FK와 검증했습니다. 보행은 floating-base G1의 접촉 해제·스윙·착지 IK를 포함합니다. 현재 보행 입력은 직접 작성한 예제이고, **특정 CITO가 생성한 외부 결과는 아직 제공되지 않았습니다.** 실제 CITO의 contact/EE 출력 JSON을 읽는 API·CLI·로컬 UI를 구현했습니다. [입력 형식·측정 결과](docs/trajectory-input.md)를 확인하세요.
 
 [문헌·동일 조건 비교](benchmarks/README.md), [실측 CPU 병렬 결과](benchmarks/reports/cpu-parallel.md), [배포 설명](docs/deployment.md)을 확인하세요. 현재 24개 독립 IK query의 4-process 처리량은 약 3.93배 개선됐지만, 한 문제 내부의 4-thread 분할법이 1-thread보다 빠르지는 않았습니다. 이것을 GPU speedup이나 SOTA 우월성으로 표현하지 않습니다.
 
@@ -53,7 +53,7 @@ OPENBLAS_NUM_THREADS=1 .venv/bin/extended-pmi benchmark \
 
 공개 humanoid 7종을 대상으로 합니다: **Unitree G1, Unitree H1, Booster T1, Fourier GR1 T1, Fourier N1, ToddlerBot, ergoCub**. Berkeley biped도 별도로 포함합니다. 이는 IK 벤치마크 카탈로그이며 SOTA 성능 순위는 아닙니다.
 
-로봇팔은 제공된 **Franka Panda**, **KUKA iiwa 7/14**, **UR5/UR10**입니다. 다른 시스템으로 **KUKA–Allegro 23 DoF**, **Allegro 16 DoF**, **ANYmal C**, 그리고 **2·4·8개 Panda의 합성 공동 조작**을 포함합니다. 합성 humanoid 운반 예제도 별도로 유지합니다. 모델별 실제 검증 상태는 `docs/model-validation.json`을 확인하세요.
+원 논문의 **LASDRA/EAMM 21 DoF**도 포함합니다. 첨부 파일에는 LASDRA CAD가 없어 시각화는 표시된 막대·관절 도형입니다. 로봇팔은 제공된 **Franka Panda**, **KUKA iiwa 7/14**, **UR5/UR10**입니다. 다른 시스템으로 **KUKA–Allegro 23 DoF**, **Allegro 16 DoF**, **ANYmal C**, 그리고 **2·4·8개 Panda의 합성 공동 조작**을 포함합니다. 합성 humanoid 운반 예제도 별도로 유지합니다. 모델별 실제 검증 상태는 `docs/model-validation.json`을 확인하세요.
 
 - **Collision geometry**: URDF `<collision>`의 geometry/origin을 표시합니다.
 - **Visual meshes**: URDF `<visual>`의 geometry/origin과 원본 material을 표시합니다. Panda는 제공된 DAE, 외부 모델은 원본 STL/DAE/OBJ를 사용합니다.

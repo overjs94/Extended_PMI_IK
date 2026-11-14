@@ -33,3 +33,7 @@ Common final validation uses URDF FK, position norm ≤0.1 mm, geodesic rotation
 Do not compare successful-only medians without success counts. `closed-loop` aggregates different embodiments in the overview: use the per-embodiment CSV or the public viewer's robot/recipe selector. Three seeds per small stratum and one ergoCub case do not establish statistically general SOTA superiority.
 
 The CUDA methods remain unrun because no CUDA device is available. TRAC-IK/Drake/IKFlow/TrajOpt adapters are not qualified; they have no invented measured rows. The upstream cuRoboV2 reference uses 100-query GPU batches, 5 mm / 0.05 rad tolerances, self collision and a different G1 model with 35 variables; those values are not direct speed ratios against this strict CPU pilot.
+
+## Timed trajectories
+
+The separate [trajectory pilot](../docs/trajectory-input.md) executes LASDRA, dual/four-arm manipulation and floating G1 contact-sequence tracking. [Per-knot results](reports/tracking.json) and [summary CSV](reports/tracking.csv) include failures, phase transitions and sample-interval misses. The four inputs are authored examples; a particular external CITO export has not been supplied. Python API/CLI accept actual planner contact/EE JSON without labelling authored data as CITO output. These measurements have their own two-second loop budget and must not be mixed into the one-second 264-run pose pilot. Exact measurement source bytes are preserved in [source-snapshots](source-snapshots/README.md).

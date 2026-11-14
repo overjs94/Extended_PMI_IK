@@ -14,6 +14,7 @@ from pydantic import BaseModel,Field
 from .scenarios import CATALOG,ROOT,make_scenario
 from .kinematics import RobotModel
 from .solver import METHODS,Settings,solve_ik
+from .trajectories import TRAJECTORY_CATALOG,NATIVE_METHODS,make_trajectory,solve_trajectory
 
 app = FastAPI(title='Extended PMI-IK · Research Workbench',version='0.1.0')
 compute_lock = Lock()
@@ -34,6 +35,13 @@ class RunRequest(BaseModel):
 class BenchmarkRequest(BaseModel):
     scenario: str = Field('dual',min_length=1,max_length=64)
     seeds: list[int] = Field(default_factory=lambda:[7],min_length=1,max_length=3)
+
+
+class TrackingRequest(RunRequest):
+    trajectory: str = Field('dual-carry',min_length=1,max_length=64)
+    method: str = 'maximal-schur'
+    plan: dict | None = None
+    knot_budget_s: float = Field(2.,gt=0,le=10)
 
 
 class ImportRequest(BaseModel):
@@ -95,6 +103,31 @@ def research():
 @app.get('/api/catalog')
 def catalog():
     return dict(scenarios=CATALOG,methods=METHODS,notice='CPU research reference. Synthetic multi-Panda assemblies. No paper reproduction, collision guarantees or parallel speedup claim.')
+
+
+@app.get('/api/trajectories')
+def trajectory_catalog():
+    return {'trajectories':TRAJECTORY_CATALOG,'methods':{**METHODS,**NATIVE_METHODS},'execution':'computed'}
+
+
+@app.get('/api/trajectories/{identifier}')
+def trajectory_info(identifier:str):
+    def fn():
+        m,q,plan,grasps=make_trajectory(identifier)
+        return {**describe(m,q),'plan':plan,'targets':plan['samples'][0]['targets'],'grasps':[{'a':a,'b':b,'relative':T.tolist()} for a,b,T in grasps]}
+    return guarded(fn)
+
+
+@app.post('/api/trajectory/solve')
+def trajectory_solve(req:TrackingRequest):
+    def fn():
+        if req.method not in METHODS and req.method not in NATIVE_METHODS:raise ValueError('Unknown trajectory solver')
+        if req.plan is not None and len(json.dumps(req.plan))>2_000_000:raise ValueError('Trajectory input exceeds 2 MB')
+        m,q,plan,grasps=make_trajectory(req.trajectory)
+        return solve_trajectory(m,q,req.plan or plan,grasps,req.method,
+                                Settings(iterations=req.iterations,dt=req.dt,contraction=req.contraction,preview=req.preview,wall_time_limit_s=req.knot_budget_s,
+                                         splitting_backend=req.splitting_backend,cpu_workers=req.cpu_workers))
+    return guarded(fn)
 
 
 @app.get('/api/scenarios/{scenario}')

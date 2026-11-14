@@ -18,11 +18,17 @@ def main():
         for method in catalog['methods']:
             if not (recordings/'runs'/item['id']/f'{method}.json.gz').exists():raise SystemExit('Missing measured recording '+item['id']+'/'+method)
     shutil.copytree(recordings,DIST/'data',dirs_exist_ok=True)
+    tracking=json.loads(gzip.decompress((recordings/'tracking/catalog.json.gz').read_bytes()))
+    for item in tracking['trajectories']:
+        for method in tracking['methods']:
+            if not (recordings/'tracking/runs'/item['id']/f'{method}.json.gz').exists():raise SystemExit('Missing measured trajectory '+item['id']+'/'+method)
     research={}
     for key,path in {'literature':'benchmarks/literature.json','pilot':'benchmarks/reports/pilot.json','cpu_kernels':'benchmarks/reports/cpu-kernels.json','cpu_batch':'benchmarks/reports/cpu-batch.json'}.items():
         research[key]=json.loads((ROOT/path).read_text()) if (ROOT/path).exists() else None
     (DIST/'data/research.json.gz').write_bytes(gzip.compress(json.dumps(research,separators=(',',':'),allow_nan=False).encode(),mtime=0))
     shutil.copytree(ROOT/'models/franka_description',DIST/'models/franka_description',dirs_exist_ok=True)
+    for name in ('lasdra.urdf','lasdra.provenance.json'):
+        shutil.copy2(ROOT/'models'/name,DIST/'models'/name)
     for source in (ROOT/'models/external').iterdir():
         if not source.is_dir():continue
         target=DIST/'models/external'/source.name

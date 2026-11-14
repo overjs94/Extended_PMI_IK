@@ -24,6 +24,12 @@ export async function api(path,body){
   }
   if(path==='/api/catalog')return data('catalog');
   if(path==='/api/research')return data('research');
+  if(path==='/api/trajectories')return data('tracking/catalog');
+  if(path.startsWith('/api/trajectories/'))return data('tracking/scenarios/'+encodeURIComponent(path.split('/').at(-1)));
+  if(path==='/api/trajectory/solve'){
+    if(body.plan)throw new Error('A new planner output requires the Python API; this page replays measured inputs.');
+    return data('tracking/runs/'+encodeURIComponent(body.trajectory)+'/'+encodeURIComponent(body.method));
+  }
   if(path==='/api/health')return {status:'ok',execution:'recorded',cpu_kernels:{numpy:false,numba:false}};
   if(path==='/api/deployment')return {public_url:new URL(base,location.origin).href,source:'currently loaded static page'};
   if(path.startsWith('/api/scenarios/'))return data('scenarios/'+encodeURIComponent(path.split('/').at(-1).split('?')[0]));
