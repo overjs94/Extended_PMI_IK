@@ -1,0 +1,18 @@
+# Deploy the actual UI + Python solver API as one service.
+# This is a deployment recipe, not evidence of a live public URL.
+services:
+  - type: web
+    name: extended-pmi-ik
+    runtime: python
+    plan: free
+    buildCommand: bash scripts/deploy-build.sh
+    startCommand: bash scripts/deploy-start.sh
+    healthCheckPath: /api/health
+    autoDeploy: false
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.14
+      - key: NODE_VERSION
+        value: 24.22.1
+      - key: OPENBLAS_NUM_THREADS
+        value: '1'

@@ -4,6 +4,10 @@ URDF → symbolic FK/Jacobian → constrained midpoint IK → measured benchmark
 
 기존 PMI-IK RAL 코드와 maximal-coordinate white note를 바탕으로 구성한 **연구용 참조 구현**입니다. 기존 ROS 실행 파일의 재현 또는 논문의 병렬 가속 결과로 간주하지 않습니다.
 
+## 홈페이지와 성능
+
+공개 홈페이지는 아직 배포되지 않았습니다. [배포 설정](docs/deployment.md)과 [실측 성능 비교](docs/performance-evidence.md)를 확인하세요. 현재 CPU ADMM/DRS가 baseline보다 빠르다는 결과는 없으며, 장애물 preview의 개선은 한 시나리오에서만 확인했습니다.
+
 ## 실행
 
 Python **3.12**, Node **24**, C compiler (C 함수 검증용)가 필요합니다. 기존 체크아웃에서 실행하세요. 클라우드 작업마다 이미 격리되므로 별도 Git worktree를 만들지 않습니다.
