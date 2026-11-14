@@ -1,0 +1,230 @@
+[
+  {
+    "id": "unitree-g1",
+    "name": "Unitree G1 (29 DoF)",
+    "category": "humanoid",
+    "repository": "https://github.com/unitreerobotics/unitree_ros",
+    "commit": "267182b8521c8d6a631bab1fe63836873237a525",
+    "urdf": "robots/g1_description/g1_29dof.urdf",
+    "package_root": "robots/g1_description",
+    "target_links": [
+      "left_rubber_hand",
+      "right_rubber_hand"
+    ],
+    "anchor_links": [
+      "left_ankle_roll_link",
+      "right_ankle_roll_link"
+    ]
+  },
+  {
+    "id": "unitree-h1",
+    "name": "Unitree H1",
+    "category": "humanoid",
+    "repository": "https://github.com/unitreerobotics/unitree_ros",
+    "commit": "267182b8521c8d6a631bab1fe63836873237a525",
+    "urdf": "robots/h1_description/urdf/h1.urdf",
+    "package_root": "robots/h1_description",
+    "target_links": [
+      "left_elbow_link",
+      "right_elbow_link"
+    ],
+    "anchor_links": [
+      "left_ankle_link",
+      "right_ankle_link"
+    ]
+  },
+  {
+    "id": "booster-t1",
+    "name": "Booster T1",
+    "category": "humanoid",
+    "repository": "https://github.com/BoosterRobotics/booster_gym",
+    "commit": "687a33d08b08875fe45dc8d91b54db83766df8b9",
+    "urdf": "resources/T1/T1_serial.urdf",
+    "package_root": "resources/T1",
+    "target_links": [
+      "left_hand_link",
+      "right_hand_link"
+    ],
+    "anchor_links": [
+      "left_foot_link",
+      "right_foot_link"
+    ]
+  },
+  {
+    "id": "berkeley",
+    "name": "Berkeley Humanoid",
+    "category": "biped",
+    "repository": "https://github.com/HybridRobotics/berkeley_humanoid_description",
+    "commit": "d0d13d3f81d795480e25ed1910eaf83d5f0a1d0b",
+    "urdf": "urdf/robot.urdf",
+    "package_root": ""
+  },
+  {
+    "id": "fourier-gr1",
+    "name": "Fourier GR1 T1",
+    "category": "humanoid",
+    "repository": "https://github.com/FFTAI/Wiki-GRx-Models",
+    "commit": "351245ac8fa4bf6f4b0c41556e1e6976a438bcef",
+    "urdf": "GRX/GR1/GR1T1/urdf/GR1T1_nohand.urdf",
+    "package_root": "GRX/GR1/GR1T1",
+    "target_links": [
+      "left_end_effector_link",
+      "right_end_effector_link"
+    ],
+    "anchor_links": [
+      "left_foot_roll_link",
+      "right_foot_roll_link"
+    ]
+  },
+  {
+    "id": "fourier-n1",
+    "name": "Fourier N1",
+    "category": "humanoid",
+    "repository": "https://github.com/FFTAI/Wiki-GRx-Models",
+    "commit": "f8e683f00d1d99deb882deb9dfce6030095b466a",
+    "urdf": "N1/urdf/N1_raw.urdf",
+    "package_root": "N1",
+    "target_links": [
+      "left_end_effector_link",
+      "right_end_effector_link"
+    ],
+    "anchor_links": [
+      "left_foot_pitch_link",
+      "right_foot_pitch_link"
+    ]
+  },
+  {
+    "id": "toddlerbot",
+    "name": "ToddlerBot 2XC",
+    "category": "humanoid",
+    "repository": "https://github.com/hshi74/toddlerbot",
+    "commit": "067f9dc4f50143e36334877b9395b9c5c29ee30c",
+    "urdf": "toddlerbot/descriptions/toddlerbot_2xc/toddlerbot_2xc.urdf",
+    "package_root": "toddlerbot/descriptions/toddlerbot_2xc",
+    "target_links": [
+      "left_hand",
+      "right_hand"
+    ],
+    "anchor_links": [
+      "left_ankle_roll_link",
+      "right_ankle_roll_link"
+    ]
+  },
+  {
+    "id": "kuka-iiwa7",
+    "name": "KUKA iiwa 7",
+    "category": "arm",
+    "repository": "https://github.com/facebookresearch/differentiable-robot-model",
+    "commit": "d7bd1b3b8ef1d6dabe9b68474a622185c510e112",
+    "urdf": "diff_robot_data/kuka_iiwa/urdf/iiwa7.urdf",
+    "package_root": "diff_robot_data/kuka_iiwa",
+    "target_links": [
+      "iiwa_link_ee"
+    ],
+    "anchor_links": []
+  },
+  {
+    "id": "kuka-iiwa14",
+    "name": "KUKA iiwa 14",
+    "category": "arm",
+    "repository": "https://github.com/RobotLocomotion/drake",
+    "commit": "7abea0556ede980a5077fe1a8cfbae59b57c7c27",
+    "urdf": "manipulation/models/iiwa_description/urdf/iiwa14_primitive_collision.urdf",
+    "package_root": "manipulation/models/iiwa_description",
+    "target_links": [
+      "iiwa_link_ee_kuka"
+    ],
+    "anchor_links": []
+  },
+  {
+    "id": "ur5",
+    "name": "Universal Robots UR5",
+    "category": "arm",
+    "repository": "https://github.com/Gepetto/example-robot-data",
+    "commit": "d0d9098d752014aec3725b07766962acf06c5418",
+    "urdf": "robots/ur_description/urdf/ur5_robot.urdf",
+    "package_root": "robots/ur_description",
+    "target_links": [
+      "tool0"
+    ],
+    "anchor_links": []
+  },
+  {
+    "id": "ur10",
+    "name": "Universal Robots UR10",
+    "category": "arm",
+    "repository": "https://github.com/Gepetto/example-robot-data",
+    "commit": "d0d9098d752014aec3725b07766962acf06c5418",
+    "urdf": "robots/ur_description/urdf/ur10_robot.urdf",
+    "package_root": "robots/ur_description",
+    "target_links": [
+      "tool0"
+    ],
+    "anchor_links": []
+  },
+  {
+    "id": "kuka-allegro",
+    "name": "KUKA iiwa 7 + Allegro",
+    "category": "high-dof",
+    "repository": "https://github.com/facebookresearch/differentiable-robot-model",
+    "commit": "d7bd1b3b8ef1d6dabe9b68474a622185c510e112",
+    "urdf": "diff_robot_data/kuka_iiwa/urdf/iiwa7_allegro.urdf",
+    "package_root": "diff_robot_data/kuka_iiwa",
+    "target_links": [
+      "link_11.0_tip",
+      "link_15.0_tip",
+      "link_3.0_tip",
+      "link_7.0_tip"
+    ],
+    "anchor_links": []
+  },
+  {
+    "id": "allegro",
+    "name": "Allegro dexterous hand",
+    "category": "high-dof",
+    "repository": "https://github.com/RobotLocomotion/drake",
+    "commit": "7abea0556ede980a5077fe1a8cfbae59b57c7c27",
+    "urdf": "manipulation/models/allegro_hand_description/urdf/allegro_hand_description_left.urdf",
+    "package_root": "manipulation/models/allegro_hand_description",
+    "target_links": [
+      "link_11_tip",
+      "link_15_tip",
+      "link_3_tip",
+      "link_7_tip"
+    ],
+    "anchor_links": []
+  },
+  {
+    "id": "anymal-c",
+    "name": "ANYmal C",
+    "category": "legged",
+    "repository": "https://github.com/ANYbotics/anymal_c_simple_description",
+    "commit": "f160b8f7fed840c47a6febe8e2bc78b32bf43a68",
+    "urdf": "urdf/anymal.urdf",
+    "package_root": "",
+    "target_links": [
+      "LF_FOOT",
+      "LH_FOOT",
+      "RF_FOOT",
+      "RH_FOOT"
+    ],
+    "anchor_links": []
+  },
+  {
+    "id": "ergocub",
+    "name": "ergoCub SN002",
+    "category": "humanoid",
+    "repository": "https://github.com/icub-tech-iit/ergocub-software",
+    "commit": "02be14c202787c7b9a6108c898b7c2347f64177f",
+    "urdf": "urdf/ergoCub/robots/ergoCubSN002/model.urdf",
+    "package_root": "urdf/ergoCub",
+    "target_links": [
+      "l_hand_palm",
+      "r_hand_palm"
+    ],
+    "anchor_links": [
+      "l_sole",
+      "r_sole"
+    ]
+  }
+]

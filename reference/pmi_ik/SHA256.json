@@ -1,0 +1,11 @@
+{
+  "src/IK_new.cpp": "d2d47ed63f2ac410abb2d8dec29f2dbd04e1922b4c7c793a3c3f35ef5fea9b8c",
+  "src/Inverse_kinematics.cpp": "0e3997096657abfa6d23dff7e6c8c77ec0e05114ea2ff577731d35c917581137",
+  "include/Kinematics.cpp": "e9e25a9e1fc7687e2565be23e84aaa41f9d0ae2d9fe4eb959c9f5ef2b960942d",
+  "include/Franka_kinematics/Franka_kinematics.cpp": "76fab90bdb80b0f4c18338442d5a95bd59fee47e3fd867b48c5fc30397abe5d1",
+  "include/Franka_kinematics/Franka_kinematics.h": "065a7f3822c271b3951e33797cf07ced8d80ea37b73a3cebe6d7c9d1e800a0b6",
+  "qp_solver/src/qp_solvers/qp_solvers.hpp": "ae4acd2ade38d2cc213e72798253ab16ae168172e6670f855c09d5658361818b",
+  "qp_solver/src/qp_solvers/qp_solver_qpoases.cpp": "47d96783d58fe41dc97f7e141a8d304942971b56a33b93ee1d4aed08ee158fbc",
+  "CMakeLists.txt": "010cf7a22038b367345f99107bbd72cf0085c2c10656831c753887a251b6c0b9",
+  "package.xml": "1f3041214631c07057ea94c90e579fcd9b6a9a45bc125a84f98f7ea8fb443f73"
+}

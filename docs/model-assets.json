@@ -1,0 +1,152 @@
+[
+  {
+    "id": "allegro",
+    "repository": "https://github.com/RobotLocomotion/drake",
+    "commit": "7abea0556ede980a5077fe1a8cfbae59b57c7c27",
+    "status": "downloaded",
+    "assets": 11,
+    "source_sha256": "d226325c10bbcdac5ee5eca7b7e09874b0243b8eadbb8c3ea5adeb74e8b54230",
+    "license_file": "LICENSE.TXT",
+    "verified": true
+  },
+  {
+    "id": "anymal-c",
+    "repository": "https://github.com/ANYbotics/anymal_c_simple_description",
+    "commit": "f160b8f7fed840c47a6febe8e2bc78b32bf43a68",
+    "status": "downloaded",
+    "assets": 36,
+    "source_sha256": "3902c3957ac82176e15e87e20086a86d0dff4f23b8cb55bcbd4d3158cd36947b",
+    "license_file": "LICENSE",
+    "verified": true
+  },
+  {
+    "id": "berkeley",
+    "repository": "https://github.com/HybridRobotics/berkeley_humanoid_description",
+    "commit": "d0d13d3f81d795480e25ed1910eaf83d5f0a1d0b",
+    "status": "downloaded",
+    "assets": 13,
+    "source_sha256": "d92c2fbaa9829f3c122cc2defb59e69bd5b0958209403020f55580031eb27931",
+    "license_file": null,
+    "verified": true
+  },
+  {
+    "id": "booster-t1",
+    "repository": "https://github.com/BoosterRobotics/booster_gym",
+    "commit": "687a33d08b08875fe45dc8d91b54db83766df8b9",
+    "status": "downloaded",
+    "assets": 24,
+    "source_sha256": "027a5333ce4ed0a1cf6fcbbb12e59709d34b31c926fb4bd682ea5e4cbbc36071",
+    "license_file": "LICENSE",
+    "verified": true
+  },
+  {
+    "id": "ergocub",
+    "repository": "https://github.com/icub-tech-iit/ergocub-software",
+    "commit": "02be14c202787c7b9a6108c898b7c2347f64177f",
+    "status": "downloaded",
+    "assets": 66,
+    "source_sha256": "f82cc09ee4a6c0e2f8de5f2f889f061ed7e9ff2b17cbb710ebe99c84f99dfec7",
+    "license_file": "LICENSE",
+    "verified": true
+  },
+  {
+    "id": "fourier-gr1",
+    "repository": "https://github.com/FFTAI/Wiki-GRx-Models",
+    "commit": "351245ac8fa4bf6f4b0c41556e1e6976a438bcef",
+    "status": "downloaded",
+    "assets": 35,
+    "source_sha256": "8bdd35a9a1fc9211462066b0792c395cdcc72a3801dd1b045d15e948eba0f10c",
+    "license_file": "LICENSE",
+    "verified": true
+  },
+  {
+    "id": "fourier-n1",
+    "repository": "https://github.com/FFTAI/Wiki-GRx-Models",
+    "commit": "f8e683f00d1d99deb882deb9dfce6030095b466a",
+    "status": "downloaded",
+    "assets": 29,
+    "source_sha256": "a1afda3ad63e27938fe9adc41dd3247aed17d6970b6a0b30da6d3dc564b88867",
+    "license_file": "LICENSE",
+    "verified": true
+  },
+  {
+    "id": "kuka-allegro",
+    "repository": "https://github.com/facebookresearch/differentiable-robot-model",
+    "commit": "d7bd1b3b8ef1d6dabe9b68474a622185c510e112",
+    "status": "downloaded",
+    "assets": 27,
+    "source_sha256": "d1b38837565a1c6ef8393a64ce136a81cbaf2fad492e68109c106708777f8acf",
+    "license_file": "LICENSE",
+    "verified": true
+  },
+  {
+    "id": "kuka-iiwa14",
+    "repository": "https://github.com/RobotLocomotion/drake",
+    "commit": "7abea0556ede980a5077fe1a8cfbae59b57c7c27",
+    "status": "downloaded",
+    "assets": 15,
+    "source_sha256": "94a986da7077a211ea9a869cf25a61ed414b975ec59f564359f12b09e016ba34",
+    "license_file": "LICENSE.TXT",
+    "verified": true
+  },
+  {
+    "id": "kuka-iiwa7",
+    "repository": "https://github.com/facebookresearch/differentiable-robot-model",
+    "commit": "d7bd1b3b8ef1d6dabe9b68474a622185c510e112",
+    "status": "downloaded",
+    "assets": 16,
+    "source_sha256": "a0b12d5bb252d8ec03d79208e3cfbde568b66a20fc6444f7622e1facd3e6e897",
+    "license_file": "LICENSE",
+    "verified": true
+  },
+  {
+    "id": "toddlerbot",
+    "repository": "https://github.com/hshi74/toddlerbot",
+    "commit": "067f9dc4f50143e36334877b9395b9c5c29ee30c",
+    "status": "downloaded",
+    "assets": 47,
+    "source_sha256": "8b28339ce8967483f48eab3f0c57a977aab956e764b194580fc3349c25c388b3",
+    "license_file": "LICENSE",
+    "verified": true
+  },
+  {
+    "id": "unitree-g1",
+    "repository": "https://github.com/unitreerobotics/unitree_ros",
+    "commit": "267182b8521c8d6a631bab1fe63836873237a525",
+    "status": "downloaded",
+    "assets": 36,
+    "source_sha256": "e1dc89366bf96aa33ba4ef211884f6d81320ddd2ac6f8b1ad82986e64008be31",
+    "license_file": "LICENSE",
+    "verified": true
+  },
+  {
+    "id": "unitree-h1",
+    "repository": "https://github.com/unitreerobotics/unitree_ros",
+    "commit": "267182b8521c8d6a631bab1fe63836873237a525",
+    "status": "downloaded",
+    "assets": 21,
+    "source_sha256": "1b692e435b78fc93030bb893be39c0cbcacd1571f37d0e7eb30412bade8cdf97",
+    "license_file": "LICENSE",
+    "verified": true
+  },
+  {
+    "id": "ur10",
+    "repository": "https://github.com/Gepetto/example-robot-data",
+    "commit": "d0d9098d752014aec3725b07766962acf06c5418",
+    "status": "downloaded",
+    "assets": 14,
+    "source_sha256": "c74f9e5bc101226cde5385a823b25469da0a7d67c5f6f2d99935e6aff5eb3478",
+    "license_file": "LICENSE",
+    "verified": true
+  },
+  {
+    "id": "ur5",
+    "repository": "https://github.com/Gepetto/example-robot-data",
+    "commit": "d0d9098d752014aec3725b07766962acf06c5418",
+    "status": "downloaded",
+    "assets": 14,
+    "source_sha256": "21a125fe2f6a18d2d94caba5026df3c58b4248084a3d33d33763da6fb6b232ca",
+    "license_file": "LICENSE",
+    "verified": true
+  }
+]
