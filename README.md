@@ -6,7 +6,9 @@ URDF → symbolic FK/Jacobian → constrained midpoint IK → measured benchmark
 
 ## 홈페이지와 성능
 
-GitHub Pages 기록 뷰어의 배포 주소: **https://overjs94.github.io/Extended_PMI_IK/**
+GitHub Pages 기록 뷰어의 배포 대상 주소: **https://overjs94.github.io/Extended_PMI_IK/**
+
+첫 배포는 GitHub의 최초 사이트 생성 권한 제한으로 중단됐으며, 저장소 소유자가 Pages 소스를 GitHub Actions로 변경했습니다. 다음 배포와 공개 접속 검증이 완료될 때까지 위 주소는 배포 대상 주소입니다.
 
 이전 Contact_contraction과 같은 정적 게시 방식입니다. 21개 embodiment/scenario와 63개 실제 계산 기록, collision/visual mesh, benchmark를 재생합니다. 공개 페이지는 Python IK를 새로 계산하지 않으며, 변경된 URDF/파라미터의 실시간 계산에는 아래 로컬 API 또는 별도 서버가 필요합니다. `.github/workflows/pages.yml`은 게시 후 실제 URL과 데이터·메시 접근을 검증합니다.
 

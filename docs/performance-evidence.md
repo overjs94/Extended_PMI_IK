@@ -2,7 +2,19 @@
 
 ## Homepage status
 
-The source repository has been published, but a public website service has not been deployed. See [deployment instructions](deployment.md). A local working UI and saved cloud setup are not public hosting.
+The recorded-viewer deployment target is https://overjs94.github.io/Extended_PMI_IK/. Its first remote build and data validation passed, but GitHub refused initial Pages site creation; one-time [Pages settings](https://github.com/overjs94/Extended_PMI_IK/settings/pages) enablement is pending. Public availability is not yet verified. See [deployment instructions](deployment.md).
+
+## Current native and CPU parallel measurements
+
+The [264-run pilot](../benchmarks/README.md) compares 22 frozen cases and 12 methods with identical inputs, common final validation and a one-second loop budget. It retains every timeout, failure and unsupported row. Pink/Mink are executed native software baselines; SciPy SLSQP is executed under its own name. Other literature candidates have no invented timings.
+
+For the three-seed nearby-Panda stratum, Pink/Mink/SLSQP each succeed 3/3 with median loop times of approximately **14.2 / 13.6 / 10.3 ms**. Reduced OSQP and maximal Skew Schur succeed 3/3 at **126.3 / 172.9 ms**. Compiled one-thread ADMM/DRS succeed 3/3 at **457.7 / 403.9 ms**. These observations do not show PMI outperforming those native baselines; broader success-rate differences remain visible in the report.
+
+CPU parallel execution is implemented and measured, rather than inferred from the solver structure. The independent-query process batch finishes the same 24 frozen queries in **4473.7 / 2199.4 / 1136.9 ms** with 1/2/4 processes, all 24/24 successful: **3.93× four-process batch speedup**. This is a single measured batch per worker count, with startup excluded and separately reported, not a single-query latency reduction.
+
+Within-query compilation reduces the ergoCub ADMM linearized solve from about **295 ms NumPy to 84 ms compiled one-thread**. Four compiled threads take about **121 ms**, slower than one compiled thread. The small body/factor tasks incur synchronization costs. Full results and scope are in [cpu-parallel.md](../benchmarks/reports/cpu-parallel.md); compilation speedup must not be relabelled as threading speedup or GPU performance.
+
+## Earlier single-case formulation check
 
 ## Does the added solver formulation outperform the baseline?
 
@@ -19,7 +31,7 @@ Panda seed 7, identical initial configuration/target/tolerances; the saved singl
 | maximal-admm | 1816.2 | 126 | 0.097 |
 | maximal-drs | 1402.2 | 126 | 0.097 |
 
-Comparing maximal OSQP QP against dense Skew-VI changes both operator and backend, so its timing difference cannot be attributed to the skew term alone. Compare the two Schur variants for an operator ablation. ADMM/DRS presently establish solution agreement and a parallelizable structure; they do not establish CPU/GPU speedup.
+Comparing maximal OSQP QP against dense Skew-VI changes both operator and backend, so its timing difference cannot be attributed to the skew term alone. Compare the two Schur variants for an operator ablation. These earlier NumPy ADMM/DRS measurements establish solution agreement; use the separate current CPU measurements above for compilation, threading and process-throughput conclusions. No GPU speedup has been measured.
 
 ## Obstacle preview ablation
 

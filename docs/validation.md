@@ -1,13 +1,17 @@
 # Validation — 2026-11-14
 
-Current cloud machine: Python 3.12, CPU reference, `OPENBLAS_NUM_THREADS=1`. Results below are functional checks, not published performance claims.
+Current cloud machine: Python 3.12, four-core CPU quota, no CUDA device, `OPENBLAS_NUM_THREADS=1`. Results below distinguish functional checks from measured pilot performance.
 
-- Core suite: **42 passed** (including optional downloaded model tests); one upstream Starlette/httpx deprecation warning.
+- Full optional benchmark-environment suite: **66 passed**, including real Pink/Mink conversions, obstacle derivatives, strict closure checks and compiled CPU kernels. Upstream warnings cover Starlette/httpx, OSQP and sparse matrix conversions. Native baseline dependencies and downloaded assets are optional, so the lean CI run has a different coverage set.
 - Web production build: passed. Vite reports one >500 kB Three.js bundle warning.
 - Headless Chromium: collision/realistic mesh modes, playback, synthetic humanoid solve, obstacle detour, actual G1 visualization, custom URDF import/solve, CSV export and mobile overflow checks passed.
 - Panda: all **10** solver/backend variants converged on seed 7. Actual timings and residuals: `panda-method-validation.json` / `.csv`.
 - Obstacle detour: converged, 161 iterations, approximately **8.51 mm minimum sampled sphere clearance**. This is not full-body or continuous collision checking.
 - All **15** external models: pinned URDF and local asset checksums verified; details in `model-assets.json`.
+- Native comparison: **22 frozen cases × 12 methods = 264 runs**, including failures, deadlines and unsupported capability rows. This small pilot is not a general SOTA ranking. See [`../benchmarks/README.md`](../benchmarks/README.md).
+- Real CPU parallelism: 24 independent queries completed 24/24 at each process count; the single measured four-process batch was **3.93×** faster than one process. Compiled inner kernels agree with centralized Schur within **3.65e-6** infinity norm on the saved linearized problems; four threads were slower than one compiled thread. See [`../benchmarks/reports/cpu-parallel.md`](../benchmarks/reports/cpu-parallel.md).
+- Static Pages build: **21 scenes / 63 measured recordings** and local meshes verified. Chromium at the exact `/Extended_PMI_IK/` subpath passed recorded playback, 12-row nearby research table, desktop/mobile layout and gzip loading with zero backend API requests, page errors or HTTP failures. Prior geometry/G1/native-baseline checks are retained in the static viewer screenshot.
+- Remote [Core and web workflow](https://github.com/overjs94/Extended_PMI_IK/actions/runs/43567128271): passed for `5fda764`. The [first Pages run](https://github.com/overjs94/Extended_PMI_IK/actions/runs/43567128265) passed build/asset/data checks, then GitHub refused initial Pages site creation. Public availability is pending the one-time repository setting described in [deployment.md](deployment.md).
 - ROS bridge, GPU/distributed execution, full-mesh collision checking and full MPC: **not run / not implemented as readiness claims**.
 
 ## External-model IK check
@@ -34,4 +38,4 @@ One seed (7), maximal block Schur reference, default 600-iteration budget. `iter
 
 The real humanoid examples use anchored-feet kinematics and arm pose targets; the synthetic carry scenario explicitly includes an object and rigid grasps. The Berkeley entry is a biped baseline, not one of the seven whole-body humanoid families.
 
-Fresh-task snapshot restoration and remote GitHub Actions execution have not been verified here. Saved cloud configuration is distinct from publication.
+Fresh-task snapshot restoration has not been verified here. Saved cloud configuration is distinct from publication. The older external-model sweep above uses a different budget from the strict one-second native pilot; it must not be merged into that ranking.

@@ -2,6 +2,8 @@
 
 The public recorded-viewer deployment target is **https://overjs94.github.io/Extended_PMI_IK/**. The Pages workflow verifies the actual public response after publishing; source pushes alone are not evidence of a successful deployment.
 
+The [first Pages run](https://github.com/overjs94/Extended_PMI_IK/actions/runs/43567128265) passed the asset fetch, web build and 21-scene/63-record validation, then failed site creation with `Resource not accessible by integration`. The new repository did not yet have Pages enabled. Open [repository Pages settings](https://github.com/overjs94/Extended_PMI_IK/settings/pages), choose **Build and deployment → Source → GitHub Actions**, and rerun the workflow. The standard `GITHUB_TOKEN` cannot perform this initial site creation: [configure-pages' enablement input](https://github.com/actions/configure-pages/blob/v5/action.yml) explicitly requires a different token with higher permissions. No credential extraction or extra hosting account is needed for the manual settings route. The owner has now selected GitHub Actions in Pages settings; the next push retries publication. Public reachability remains unverified until deployment and its post-publish check succeed.
+
 ## Recorded viewer: GitHub Pages
 
 This follows the already published `overjs94/Contact_contraction` workflow: recorded solver data and URDF visuals are static files, not a Python service. The public page labels recorded execution, fixes parameters to their measured values, and never pretends a saved response is a new solve. Realistic meshes and collision geometry use separate URDF origins. Native baseline energy is shown as unreported rather than invented.
